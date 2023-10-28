@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{
+   padding: 0;
+   margin: 0;
+   font-family: 'Poppins', sans-serif;
+}
+.main{
+   height: 100vh;
+   width: 100vw;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-image: url(https://png.pngtree.com/background/20210712/original/pngtree-blue-abstract-background-picture-image_1170267.jpg);
+   background-position: center;
+   background-size: cover;
+}
+.container{
+   background-color: rgb(250, 250, 255);
+   padding: 50px 65px;
+   border-radius: 3px;
+   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   display: flex;
+}
+/* Right image */
+.container .right{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.container .right img{
+   height: 420px;
+   margin-left: 10px;
+}

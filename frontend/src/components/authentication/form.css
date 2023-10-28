@@ -1,0 +1,188 @@
+/* Login Form */
+.authForm form{
+   background-color: white;
+   width: 330px;
+   padding: 30px 40px;
+   padding-bottom: 40px;
+   border-radius: 15px;
+   border-radius: 3px;
+   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.authForm form h3{
+   font-size: 32px;
+}
+.authForm form p{
+   font-size: 14px;
+   color: #9f9f9f;
+   padding-bottom: 5px;
+}
+.authForm form p span,form label h4 span{
+   font-weight: 500;
+   text-decoration: underline;
+   color: #0027c3;
+   cursor: pointer;
+}
+.authForm form label h4{
+   font-weight: 500;
+   padding-top: 17px;
+   font-size: 14px;
+}
+.authForm form input{
+   width: 308px;
+   padding: 13px 0;
+   border-radius: 6px;
+   outline: none;
+   border: none;
+   margin-top: 8px;
+   border: 1px solid #b18fe5;
+   padding-left: 20px;
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+}
+.authForm form label span{
+   float: right;
+   font-size: 13px;
+}
+.authForm form input:focus{
+   border-color:#893DFF;
+}
+.authForm form button{
+   padding: 13px;
+   width: 100%;
+   margin-top: 20px;
+   border-radius: 7px;
+   border: 2px solid #7c2a80;
+   background-color: #2e439a;
+   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+   color: white;
+   font-weight: 500;
+   cursor: pointer;
+   text-transform: uppercase;
+   background-image: linear-gradient(90deg, #7c2a80 0%, #2e439a 100%);
+}
+.authForm .formBottom p{
+   margin-top: 17px;
+   text-align: center;
+}
+.authForm .formBottom p::before{
+   content: '';
+   position: absolute;
+   height: 1.4px;
+   background-color: #9f9f9f;
+   width: 100px;
+   margin-left: 0;
+   margin-top: 11px;
+   margin-left: 100px;
+}
+.authForm .formBottom p::after{
+   content: '';
+   position: absolute;
+   height: 1.4px;
+   background-color: #9f9f9f;
+   width: 100px;
+   margin-top: 11px;
+   margin-left: -200px;
+}
+.authForm .formBottom button{
+   transition: 200ms;
+   background-color: transparent;
+   margin-top: 10px;
+   cursor: not-allowed;
+}
+.authForm .formBottom button span{
+   position: absolute;
+   margin-left: -28px;
+   margin-top: -3px;
+}
+.authForm .formBottom button span svg{
+   fill: white;
+}
+.authForm .formBottom button:nth-child(2){
+   border-color: #f0385d;
+   background-color: #f0385d;
+   background-image: linear-gradient(90deg, #df9185 0%, #f0385d 55%);
+} 
+.authForm .formBottom button:nth-child(2):hover{
+   color: rgb(224, 79, 57);
+   background-color: white;
+   background-image: none;
+}
+.authForm .formBottom button:nth-child(2):hover svg{
+   fill: rgb(224, 79, 57);
+}
+.authForm .formBottom button:last-child{
+   background-color: #2556b9;
+   border-color: #4d9cec;
+   background-image: linear-gradient(62deg, #2556b9 0%, #0027c3 100%);
+}
+.authForm .formBottom button:last-child:hover{
+   color: #893DFF;
+   background-color: white;
+   background-image: none;
+}
+.authForm .formBottom button:last-child:hover svg{
+   fill: #893DFF;
+}
+/* Signup Form */
+.authForm .signupForm{
+   padding-top: 10px;
+}
+.authForm .signupForm .signupSteps{
+   display: flex;
+   justify-content: space-between;
+   padding-bottom: 20px;
+}
+.authForm .signupForm .signupSteps div{
+   height: 2px;
+   border-radius: 3px;
+   width: 49%;
+   background-color: #0027c3;
+}
+.authForm .signupForm .signupBtns{
+   display: flex;
+   justify-content: space-between;
+}
+.authForm .signupForm .signupBtns button{
+   width: 47%;
+}
+.authForm .signupForm .signupStep2 #goSignStep1Btn{
+   background-color: white;
+   background-image: none;
+   color: #2e439a;
+}
+.authForm .signupForm .signupStep2 #goSignStep1Btn:hover{
+   background-color: #2e439a;
+   background-image: none;
+   color: white;
+   background-image: linear-gradient(90deg, #7c2a80 0%, #2e439a 100%);
+}
+.authForm .signupForm .formBottom button{
+   padding-left: 35px;
+}
+.authForm .signupForm .signupStep1 .formBottom .signupBtns button:nth-child(1){
+   border-color: #f0385d;
+   background-color: #f0385d;
+   background-image: linear-gradient(90deg, #df9185 0%, #f0385d 55%);
+} 
+.authForm .signupForm .signupStep1 .formBottom .signupBtns button:nth-child(1):hover{
+   color: rgb(224, 79, 57);
+   background-color: white;
+   background-image: none;
+}
+.authForm .signupForm .signupStep1 .formBottom .signupBtns button:nth-child(1):hover svg{
+   fill: rgb(224, 79, 57);
+}
+/* Signup gender section */
+.authForm .signupGender label h4{
+   margin: 5px 0;
+}
+.authForm .signupGender .gender div{
+   margin: 5px 15px;
+   display: inline-block;
+}
+.authForm .signupGender .gender input{
+   width: auto;
+   padding: 0;
+   box-shadow: none;
+   margin-top: 2px;
+   margin-right: 6px;
+}

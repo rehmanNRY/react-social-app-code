@@ -1,0 +1,85 @@
+/* https://spellquiz.com/upload/file?d=user-avatars/avatar-2.png */
+/* https://spellquiz.com/upload/file?d=user-avatars/avatar-13.png */
+/* https://spellquiz.com/upload/file?d=user-avatars/avatar-12.png */
+*{
+   padding: 0;
+   margin: 0;
+   list-style: none;
+}
+.noPostText{
+   text-align: center;
+   color: white;
+}
+.posts_main{
+   width: 46vw;
+   background-color: #17181C;
+   margin: 0 auto;
+   padding: 20px;
+}
+/* New post */
+.posts-new_post,.post{
+   padding: 13px;
+   background-color: #2c2e34;
+   border: 1px solid #646464;
+   border-radius: 10px;
+   margin: 13px 0;
+}
+/* New post top*/
+.posts-new_post .posts-new_post-top,.post .post_top .post_profile,.post form{
+   display: flex;
+}
+.posts-new_post .posts-new_post-top div,.post .post_top .post_profile-pic{
+   height: 43px;
+   width: 43px;
+   border-radius: 50%;
+   background-color: rgb(142, 142, 142);
+   background-image: url(https://spellquiz.com/upload/file?d=user-avatars/avatar-14.png);
+   background-position: center;
+   background-size: cover;
+   margin-right: 6px;
+   box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 2px 0px rgba(255, 255, 255, 0.5) 0px 2px 6px 2px;
+}
+.posts-new_post .posts-new_post-top input{
+   background-color: #252730;
+   height: 43px;
+   border-radius: 35px;
+   padding: 0 20px;
+   width: 37.2vw;
+   border: none;
+   outline: none;
+   color: white;
+   border: 1px solid #646464;
+   box-shadow: rgba(87, 93, 98, 0.3) 0px 1px 2px 0px, rgba(95, 102, 107, 0.15) 0px 2px 6px 2px;
+}
+.posts-new_post .posts-new_post-top input::placeholder{
+   color: #bdbdbd;
+}
+/* New post bottom*/
+.posts-new_post-bottom{
+   margin-top: 17px;
+   display: flex;
+   justify-content: space-between;
+}
+.posts-new_post-bottom ul,.post .post_top ul{
+   display: flex;
+   align-items: center;
+}
+.posts-new_post-bottom ul li i,.post .post_top ul li i{
+   margin-right: 15px;
+   font-size: 23px;
+   color: #e3e3e3;
+   cursor: pointer;
+}
+.posts-new_post-bottom div button{
+   padding: 4px 27px;
+   margin-left: 12px;
+   background-color: #1E1F24;
+   border-radius: 2px;
+   font-size: 14px;
+   color: #d6d6d6;
+   border: 1px solid #646464;
+   cursor: pointer;
+}
+.posts-new_post-bottom div button:hover{
+   background-color: #000000;
+}

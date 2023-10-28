@@ -1,0 +1,260 @@
+.post .post_top{
+   display: flex;
+   justify-content: space-between;
+}
+.post .post_top label{
+   margin-left: 8px;
+   color: #ffffff;
+}
+.post .post_top h4{
+   font-size: 12px;
+   color: rgb(203, 203, 203);
+   margin-left: 8px;
+   font-weight: 300;
+}
+.post .post_content p{
+   color: white;
+   margin-top: 10px;
+   font-weight: 300;
+}
+/* Post bottom */
+.post .post_bottom,.comments .comments_bottom{
+   display: flex;
+   margin-top: 8px;
+   justify-content: space-around;
+   border-top: 1px solid #646464;
+   border-bottom: 1px solid #646464;
+   padding: 5px 0;
+   background-color: rgb(35, 36, 41);
+}
+.post .post_bottom button,.comments .comments_bottom button{
+   padding: 9px 30px;
+   border-radius: 2px;
+   font-size: 15px;
+   color: #f2f2f2;
+   border: none;
+   outline: none;
+   background-color: transparent;
+   cursor: pointer;
+}
+.post .post_bottom button:hover{
+   background-color: #141414;
+}
+.post .post_bottom button span{
+   margin-right: 8px;
+}
+.post .post_bottom button span:nth-child(2){
+   padding: 2px 13px;
+   font-size: 13px;
+   color: white;
+   background-color: #2A86FF;
+   border-radius: 30px;
+   margin-left: 5px;
+   margin-right: 0;
+}
+.post .post_bottom button:not(:first-child) span:nth-child(2){
+   background-color: #36383f;
+}
+/* Post menu */
+.post_menu{
+   padding: 1px 5px;
+   border-radius: 8px;
+   background-color: pink;
+   position: absolute;
+   margin-left: -110px;
+   margin-top: 48px;
+   background-color: #1c1c1c;
+}
+.post_menu button{
+   display: block;
+   padding: 6px;
+   border-radius: 5px;
+   font-size: 15px;
+   color: #f2f2f2;
+   outline: none;
+   cursor: pointer;
+   width: 130px;
+   margin: 6px 0;
+   background-color: rgb(35, 37, 42);
+   border: 1px solid rgb(77, 77, 77)
+}
+.post_menu button span{
+   margin-right: 10px;
+}
+.post_menu button:hover{
+   background-color: rgb(24, 25, 28);
+}
+.post_bottom button.btn_liked{
+   color: #2A86FF;
+}
+/* Post likers */
+.post_likers{
+   margin-top: 20px;
+   height: 18px;
+   display: flex;
+}
+.post_likers div div{
+   height: 18px;
+   width: 18px;
+   display: inline-block;
+   border-radius: 50%;
+   background-color: rgb(142, 142, 142);
+   background-image: url(https://spellquiz.com/upload/file?d=user-avatars/avatar-14.png);
+   background-position: center;
+   background-size: cover;
+   z-index: 2;
+   position: relative;
+   box-shadow: rgba(87, 93, 98, 0.3) 0px 1px 2px 0px, rgba(95, 102, 107, 0.15) 0px 2px 6px 2px;
+}
+.post_likers div div:last-child{
+   margin-left: -4px;
+   z-index: 1;
+   background-image: url(https://spellquiz.com/upload/file?d=user-avatars/avatar-13.png);
+}
+.post_likers p{
+   line-height: 18px;
+   color: #ececec;
+   margin-left: 6px;
+   font-size: 14px;
+   cursor: pointer;
+}
+.post .likers_list{
+   padding: 8px 11px;
+   border-radius: 13px;
+   background-color: white;
+   position: absolute;
+   z-index: 3;
+   margin-top: 40px;
+   opacity: 83%;
+}
+.post .likers_list li{
+   color: black;
+   font-size: 12px;
+}
+/* comment */
+.post form{
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+.post form div{
+   height: 39px;
+   width: 39px;
+   border-radius: 50%;
+   background-color: rgb(142, 142, 142);
+   background-image: url(https://spellquiz.com/upload/file?d=user-avatars/avatar-14.png);
+   background-position: center;
+   background-size: cover;
+   margin-right: 6px;
+   box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 2px 0px rgba(255, 255, 255, 0.5) 0px 2px 6px 2px;
+}
+.post form input{
+   height: 39px;
+   width: 37vw;
+   background-color: #252730;
+   border-radius: 35px;
+   padding: 0 20px;
+   border: none;
+   outline: none;
+   color: white;
+   border: 1px solid #646464;
+   box-shadow: rgba(87, 93, 98, 0.3) 0px 1px 2px 0px, rgba(95, 102, 107, 0.15) 0px 2px 6px 2px;
+}
+.post form button{
+   background-color: transparent;
+   border: none;
+   margin-left: -33px;
+   cursor: pointer;
+}
+.post form button i{
+   color: #2A86FF;
+   font-size: 25px;
+   line-height: 39px;
+}
+.post form button i:last-child{
+   display: none;
+}
+.post form button:hover i:first-child{
+   display: none;
+}
+.post form button:hover i:last-child{
+   display: block;
+}
+/* comment section */
+.comment{
+   display: flex;
+   margin: 7px 0;
+   margin-left: 10px;
+}
+.comment .commentProfilePic{
+   height: 34px;
+   width: 34px;
+   border-radius: 50%;
+   background-color: rgb(142, 142, 142);
+   background-image: url(https://spellquiz.com/upload/file?d=user-avatars/avatar-13.png);
+   background-position: center;
+   background-size: cover;
+   margin-right: 6px;
+   box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 2px 0px rgba(255, 255, 255, 0.5) 0px 2px 6px 2px;
+}
+.comment div:last-child{
+   padding: 9px 14px;
+   border-radius: 17px;
+   background-color: #232429;
+   border: 1px solid #484848;
+   color: #e4e6eb;
+   box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 2px 0px rgba(255, 255, 255, 0.5) 0px 2px 6px 2px;
+}
+.comment div h4,.cmnts_sort h4{
+   display: inline-block;
+   font-size: 14px;
+   font-weight: 600;
+}
+.comment div h4{
+   display: flex;
+   justify-content: space-between;
+}
+.comment div h4 button{
+   float: right;
+   background-color: transparent;
+   color: #e4e6eb;
+   border: none;
+   cursor: pointer;
+   font-size: 17px;
+}
+.comment div p,.cmnts_sort p{
+   font-size: 15px;
+   font-weight: 400;
+}
+.comment div p span{
+   margin-left: 7px;
+   color: #b0b3b8;
+   font-size: 12px;
+}
+.comment:not(:first-child){
+   display: none;
+}
+.comment.viewComments:not(:first-child){
+   display: flex;
+}
+/* comments bootom */
+.comments .comments_bottom button{
+   color: #2A86FF;
+}
+.comments .comments_bottom button:hover{
+   text-decoration: underline;
+}
+.comments .comments_bottom:hover{
+   background-color: #1f1f1f;
+}
+/* Comments sort */
+.cmnts_sort{
+   display: flex;
+   margin-top: 5px;
+   margin-bottom: 10px;
+   justify-content: space-between;
+   color: #e4e6eb;
+}
+.cmnts_sort p span{
+   font-weight: 600;
+   color: rgb(236, 236, 236);
+}
