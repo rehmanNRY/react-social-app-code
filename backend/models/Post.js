@@ -46,7 +46,13 @@ const postSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  bookmarkedBy: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
 });
 
 module.exports = mongoose.model("post", postSchema);

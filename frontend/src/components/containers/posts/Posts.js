@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Post from './Post';
 import "./posts.css";
-import userDetailApi from '../functions/userDetailApi';
-import deletePostApi from '../functions/deletePostApi';
-import publishPostApi from '../functions/publishPostApi';
-import fetchPostsApi from '../functions/fetchPostsApi';
+import userDetailApi from '../functions/user/userDetailApi';
+import deletePostApi from '../functions/post/deletePostApi';
+import publishPostApi from '../functions/post/publishPostApi';
+import fetchPostsApi from '../functions/post/fetchPostsApi';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);

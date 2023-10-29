@@ -115,9 +115,14 @@ router.post('/comment', fetchUser, async (req, res) => {
       if (!post) {
          return res.status(404).json({ error: "Post not found" });
       }
-      post.comments.push({ user_id: userId, user_name: user_name.name, description });
+      let newComment = {
+         user_id: userId,
+         user_name: user_name.name,
+         description
+      };
+      post.comments.push(newComment);
       await post.save();
-      res.json({ success: "Comment successfully" });
+      res.json({ success: "Comment successfully", comment: post.comments[post.comments.length - 1] });
    } catch (error) {
       console.error(error);
       res.status(400).json({ error: "Internal server error" });
@@ -151,6 +156,49 @@ router.delete('/comment/', fetchUser, async (req, res) => {
    } catch (error) {
       console.error(error);
       res.status(400).json({ error: "Internal server error" });
+   }
+});
+
+// Route 7: Bookmark a post using POST "/api/post/bookmark/" : Login required
+router.post('/bookmark/', fetchUser, async (req, res) => {
+   try {
+      const userId = req.user.id;
+      const postId = req.body.postId;
+      // Check if the post exists
+      const post = await Post.findById(postId);
+      if (!post) {
+         return res.status(404).json({ error: "Post not found" });
+      }
+      // Check if the user has already bookmarked the post
+      const isBookmarked = post.bookmarkedBy.includes(userId);
+      if (isBookmarked) {
+         // If already bookmarked, remove it from the bookmark list
+         const bookmarkIndex = post.bookmarkedBy.indexOf(userId);
+         post.bookmarkedBy.splice(bookmarkIndex, 1);
+         await post.save();
+         res.json({ success: "Post removed from bookmark list" });
+      } else {
+         // If not bookmarked, add it to the bookmark list
+         post.bookmarkedBy.push(userId);
+         await post.save();
+         res.json({ success: "Post bookmarked successfully" });
+      }
+   } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal server error" });
+   }
+});
+
+// Route 8: Get all posts bookmarked by any user using GET "/api/post/bookmarked" : Login required
+router.get('/bookmarked', fetchUser, async (req, res) => {
+   try {
+      const userId = req.user.id;
+      // Find all posts that have been bookmarked by the user
+      const bookmarkedPosts = await Post.find({ bookmarkedBy: userId }).select("-bookmarkedBy");
+      res.json(bookmarkedPosts);
+   } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal server error" });
    }
 });
 

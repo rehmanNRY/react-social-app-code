@@ -1,38 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import "./post.css"
-import getUserDetail from '../functions/userDetailApi';
-import likePostApi from '../functions/likePostApi';
-import postCommentApi from '../functions/postCommentApi';
-import deleteCommentApi from '../functions/deleteCommentApi';
+import getUserDetail from '../functions/user/userDetailApi';
+import likePostApi from '../functions/likeShareComment/likePostApi';
+import postCommentApi from '../functions/likeShareComment/postCommentApi';
+import deleteCommentApi from '../functions/likeShareComment/deleteCommentApi';
+import bookmarkPostApi from '../functions/bookmark/bookmarkPostApi';
+import bookmarkListApi from '../functions/bookmark/bookmarkListApi';
 
 const Post = (props) => {
-  const [comments, setComments] = useState(props.post.comments);
-  const [likerList, setLikerList] = useState("none")
   const { user_name, description, likes, date } = props.post;
-  // Post total likes
-  const [totalLikes, setTotalLikes] = useState(likes ? likes.length : 0);
+  // Comment
+  const [comments, setComments] = useState(props.post.comments);
+  // Total number comments
   const [totalComments, setTotalComments] = useState(comments ? comments.length : 0);
-  // Delete and like Post
-  const { deletePost } = props;
-  // Calcutate post uploaded time ago
+  // List of users who liked post
+  const [likerList, setLikerList] = useState("none")
+  // Total number of likes of a post
+  const [totalLikes, setTotalLikes] = useState(likes ? likes.length : 0);
+  // Is post liked or not
+  const [liked, setLiked] = useState(false);
+  // Is post bookmarked or not
+  const [bookmarked, setBookmarked] = useState(false);
+  // Calcutate uploaded time ago
   const calculateTimeAgo = (postDate) => {
     return formatDistanceToNow(new Date(postDate), { addSuffix: true });
   }
   const [post_menu, setPost_menu] = useState("hidden");
   const [userId, setUserId] = useState(null);
-  const [liked, setLiked] = useState(false);
   // Getting user detail
   useEffect(() => {
     // Getting user detail
     const userDetail = async () => {
       const user = await getUserDetail();
       setUserId(user._id);
-      if (likes.some(like => like.user_id === user._id)) {
-        setLiked(true);
-      }
     }
     userDetail();
+    // Is post liked or not
+    if (likes.some(like => like.user_id === userId)) {
+      setLiked(true);
+    }
+    // Getting bookmark list
+    const bookmarkList = async () => {
+      const bookmarkPosts = await bookmarkListApi();
+      // Check if the target post is in the bookmarkedPosts array
+      const isBookmarked = bookmarkPosts.some(post => post._id === props.post._id);
+      setBookmarked(isBookmarked);
+    };
+    bookmarkList();
+    // eslint-disable-next-line
   }, [likes, userId]);
 
   const postMenuClick = () => {
@@ -79,13 +95,8 @@ const Post = (props) => {
   const newComment = async (e, id) => {
     e.preventDefault();
     const json = await postCommentApi(id, comment_desc);
-    // console.log(json);
     if (json.success) {
-      const newComment = {
-        user_name: user_name,
-        description: comment_desc,
-        date: new Date().toISOString(),
-      };
+      const newComment = json.comment;
       setComments([newComment, ...comments])
       setTotalComments(comments.length + 1)
       // Clear the comment input
@@ -129,6 +140,11 @@ const Post = (props) => {
       setOpenCommentId(commentId);
     }
   }
+  // Bookmark post
+  const bookmarkPost = async (postId)=>{
+    const json = await bookmarkPostApi(postId);
+    setBookmarked(json.success === "Post bookmarked successfully");
+  }
   return (
     <div className='post'>
       <div className="post_top">
@@ -144,9 +160,13 @@ const Post = (props) => {
             <button type="button" style={{ cursor: "not-allowed" }}>
               <span><i className='bx bxs-edit' ></i></span>Edit
             </button>
-            <button type="button" onClick={() => { deletePost(props.post._id) }}><span><i className='bx bxs-trash-alt'></i></span>Delete</button>
+            <button type="button" onClick={() => { props.deletePost(props.post._id) }}>
+              <span><i className='bx bxs-trash-alt'></i></span>Delete
+            </button>
           </div>}
-          <li><i className='bx bx-bookmark'></i></li>
+          <li className='bookmarkIcon' onClick={()=>{bookmarkPost(props.post._id)}}>
+            {bookmarked ? <i  style={{animation: "2s myAni"}} className='bx bxs-bookmark'></i> : <i className='bx bx-bookmark'></i>}
+          </li>
           {props.post.user === userId && <li onClick={postMenuClick}><i className='bx bx-menu-alt-right'></i></li>}
         </ul>
       </div>
@@ -194,10 +214,10 @@ const Post = (props) => {
           <i className='bx bx-send'></i>
         </button>
       </form>
-      <div className='cmnts_sort'>
+      {comments.length > 0 && <div className='cmnts_sort'>
         <h4>All comments</h4>
         <p>Sort by <span>Oldest</span></p>
-      </div>
+      </div>}
       <div className="comments">
         {comments.map((comment) => {
           const isCommentMenuOpen = openCommentId === comment._id;
@@ -225,9 +245,9 @@ const Post = (props) => {
             </div>
           );
         })}
-        <div className="comments_bottom">
+        {comments.length > 1 && <div className="comments_bottom">
           <button type="button" onClick={viewAllCmnt}>{viewCmntsBtn}</button>
-        </div>
+        </div>}
       </div>
     </div>
   )
