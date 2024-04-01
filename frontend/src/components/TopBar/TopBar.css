@@ -1,0 +1,199 @@
+/* TopBar */
+.topBar{
+  height: 70px;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  z-index: 9999;
+  position: fixed;
+  width: 100vw;
+}
+/* Topbar Left */
+.topBar_LeftRegion{
+  height: 100%;
+  width: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 10px;
+  /* display: none; */
+}
+.topBar_LeftRegion span{
+  height: 48px;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  background-color: var(--text-secondary-color);
+  border-radius: 50%;
+}
+.topBar_LeftRegion span:hover{
+  border-radius: 20%;
+}
+.topBar_LeftRegion svg{
+  stroke: white;
+}
+/* Topbar center */
+.topBar_CenterRegion{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5px;
+}
+/* Topbar center logo */
+.topBar_CenterRegion .topBar_Center_Logo a{
+  color: var(--text-color);
+  font-size: 21px;
+  font-weight: 700;
+  user-select: none;
+  text-decoration: none;
+}
+.topBar_CenterRegion .topBar_Center_Logo a span{
+  color: var(--text-secondary-color);
+}
+.topBar_CenterRegion svg.absolute{
+  position: absolute;
+  right: 340px;
+}
+/* Topbar center search */
+.topBar_Center_Search{
+  width: 40%;
+  background-color: var(--secondary-color);
+  height: 50px;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.topBar_Center_Search form{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.topBar_Center_Search form div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3px;
+  position: absolute;
+}
+.topBar_Center_Search form button{
+  outline: none;
+  border: none;
+  width: 65px;
+  background-color: transparent;
+  /* padding-top: 2px; */
+}
+.topBar_Center_Search form button svg{
+  height: 22px;
+  width: 22px;
+  fill: var(--text-secondary-color);
+  stroke: var(--text-secondary-color);
+  stroke-width: 3;
+}
+.topBar_Center_Search form input{
+  width: 100%;
+  padding-left: 55px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: var(--text-color);
+  /* font-size: 14px; */
+}
+input[type="search"]::-webkit-input-placeholder{
+  color: rgb(110, 110, 110);
+}
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+/* Topbar search menu */
+.topbar_searchMenu{
+  width: 100%;
+  background-color: var(--secondary-color);
+  border-radius: 6px;
+  margin-top: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: none;
+}
+.topbar_searchMenu.displayMenu{
+  display: block;
+}
+.topbar_searchMenu-main{
+  padding: 8px 0;
+  color: var(--text-color);
+}
+.topbar_searchMenu-main h3{
+  font-weight: 600;
+  font-size: 16px;
+  padding: 5px 15px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  color: var(--text-secondary-color);
+}
+.topbar_searchMenu-item{
+  border-radius: 4px;
+  margin: 3px 0;
+  padding: 6px 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all .2s;
+}
+.topbar_searchMenu-item:hover{
+  background-color: #ddecff;
+  border-left: 3px solid var(--text-secondary-color);
+}
+.topbar_searchMenu-item .searchmenu-itemPic{
+  height: 35px;
+  width: 35px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  background-image: url(https://ashisheditz.com/wp-content/uploads/2023/09/cute-whatsapp-dp.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.topbar_searchMenu-item h4{
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+}
+/* Topbar center button */
+.topBar_Center_Btns{
+  display: flex;
+}
+.topBar_Center_Btns button{
+  height: 48px;
+  width: 48px;
+  border: none;
+  outline: none;
+  line-height: 59px;
+  cursor: pointer;
+  transition: all .2s;
+  background-color: transparent;
+  margin: 0px 3px;
+  background-color: var(--text-secondary-color);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-radius: 50%;
+  /* background-color: black; */
+}
+.topBar_Center_Btns button:hover{
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.topBar_Center_Btns button svg{
+  stroke: white;
+}
+/* Topbar right */
+.topBar_RightRegion{
+  height: 100%;
+  width: 30px;
+}

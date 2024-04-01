@@ -1,0 +1,44 @@
+.friends_suggestion{
+  display: flex;
+  padding: 0 10px;
+}
+.friend_suggested{
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  padding: 18px 12px;
+  margin: 0 5px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.friend_suggested .friend_suggestPic{
+  height: 90px;
+  width: 90px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.friend_suggested h3{
+  line-height: 60px;
+  font-weight: 500;
+}
+.friend_suggested button{
+  background-color: var(--text-secondary-color);
+  border-radius: 9px;
+  padding: 10px 25px;
+  border: none;
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  padding-left: 48px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.friend_suggested button span{
+  position: absolute;
+  margin-left: -30px;
+  margin-top: -1px;
+}
+.friend_suggested button span i{
+  font-size: 23px;
+}

@@ -1,0 +1,88 @@
+/* https://spellquiz.com/upload/file?d=user-avatars/avatar-2.png */
+/* https://spellquiz.com/upload/file?d=user-avatars/avatar-13.png */
+/* https://spellquiz.com/upload/file?d=user-avatars/avatar-12.png */
+.noPostText{
+   text-align: center;
+   color: white;
+}
+.posts_main{
+   background-color: var(--secondary-color);
+   border-top-left-radius: 40px;
+   border-top-right-radius: 40px;
+   margin: 0 auto;
+   padding: 20px 44px;
+   margin-top: 80px;
+}
+/* New post */
+.posts-new_post,.post{
+   padding: 18px;
+   background-color: var(--primary-color);
+   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+   border-radius: 10px;
+   margin: 13px 0;
+}
+/* New post top*/
+.posts-new_post .posts-new_post-top,.post .post_top .post_profile,.post form{
+   display: flex;
+}
+.posts-new_post .posts-new_post-top div,
+.post .post_top .post_profile-pic,
+.rightBar .otherUsers ul li div{
+   height: 43px;
+   width: 43px;
+   border-radius: 50%;
+   background-color: var(--secondary-color);
+   background-image: url(https://spellquiz.com/upload/file?d=user-avatars/avatar-14.png);
+   background-position: center;
+   background-size: cover;
+   margin-right: 6px;
+   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.posts-new_post .posts-new_post-top input{
+   background-color: var(--secondary-color);
+   height: 43px;
+   border-radius: 35px;
+   padding: 1px 21px;
+   width: 37.2vw;
+   border: none;
+   outline: none;
+   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.posts-new_post .posts-new_post-top input::placeholder{
+   color: #484848;
+}
+/* New post bottom*/
+.posts-new_post-bottom{
+   margin-top: 17px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.posts-new_post-bottom ul,.post .post_top ul{
+   display: flex;
+   align-items: center;
+}
+.posts-new_post-bottom ul li i,.post .post_top ul li i{
+   margin-right: 12px;
+   font-size: 25px;
+   cursor: pointer;
+   transition: all .1s;
+}
+.posts-new_post-bottom ul li i:hover,.post .post_top ul li i:hover{
+   color: var(--text-secondary-color);
+}
+.posts-new_post-bottom div button{
+   padding: 10px 27px;
+   margin-left: 8px;
+   background-color: var(--text-secondary-color);
+   color: white;
+   border-radius: 2px;
+   font-size: 14px;
+   border: none;
+   border-radius: 25px;
+   cursor: pointer;
+   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.posts-new_post-bottom div button:hover{
+   background-color: #000000;
+}

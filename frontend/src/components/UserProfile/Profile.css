@@ -1,0 +1,123 @@
+.UserProfile_main{
+  width: 100%;
+  height: 100vh;
+  background-color: var(--secondary-color);
+  max-width: calc(100% - 280px);
+  margin-top: 80px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+/* Profile */
+.UserProfile{
+  height: 100%;
+  background-color: white;
+  margin: 10px;
+  overflow: hidden;
+}
+/* Profile top */
+.profile_cover{
+  height: 33vh;
+  background-color: var(--primary-color);
+  background-image: url(https://ih1.redbubble.net/cover.4093136.2400x600.jpg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.profile_data{
+  /* background-color: aqua; */
+  display: flex;
+}
+.profile_pic{
+  background-color: var(--secondary-color);
+  background-image: url(https://img.freepik.com/premium-photo/young-boy-hearing-music-computer-3d-character-illustration_839035-103323.jpg);
+  background-position: center;
+  background-size: cover;
+  border-radius: 14px;
+  height: 200px;
+  width: 175px;
+  margin-top: -100px;
+  margin-left: 40px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.profile_info{
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.profile_info h3{
+  font-size: 30px;
+  line-height: 38px;
+}
+.profile_info p{
+  color: rgb(51, 51, 51);
+}
+.user_profile-btns{
+  margin-top: 30px;
+  margin-left: 110px;
+}
+.user_profile-btns button{
+  background-color: var(--text-secondary-color);
+  border-radius: 9px;
+  padding: 11px 27px;
+  border: none;
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  padding-left: 48px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.user_profile-btns button:last-child{
+  margin-left: 7px;
+  background-color: #4f515b;
+}
+.user_profile-btns button span{
+  position: absolute;
+  margin-left: -30px;
+  margin-top: -1px;
+}
+.user_profile-btns button span i{
+  font-size: 23px;
+}
+/* Profile menu */
+.profile_menu{
+  margin-top: 27px;
+}
+.profile_menu ul{
+  display: flex;
+  padding-left: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.profile_menu ul li{
+  padding: 11px 20px;
+  cursor: pointer;
+  transition: all .1s;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.profile_menu ul li:hover{
+  background-color: var(--secondary-color);
+}
+.profile_menu ul li:nth-child(1){
+  border-bottom: 3px solid var(--text-secondary-color);
+}
+.profile_menu ul li a{
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: black;
+  font-family: "Titillium Web", sans-serif;
+}
+.profile_menu ul li a span svg{
+  padding-right: 7px;
+  position: relative;
+  display: table-cell;
+  height: 23px;
+  text-align: center;
+  vertical-align: middle;
+  stroke-width: 1.7;
+}
+/* Friend suggstion */
+.userProfile_f_sugg .user_profile-btns{
+  margin: 30px;
+}

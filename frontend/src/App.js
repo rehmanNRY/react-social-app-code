@@ -1,10 +1,11 @@
-import Auth from './components/authentication/Auth';
 import {
    BrowserRouter as Router,
    Routes,
    Route,
 } from "react-router-dom";
-import Home from './components/containers/home/Home';
+
+import Home from './components/Home/Home';
+import Auth from './components/authentication/Auth';
 
 function App() {
    return (

@@ -1,0 +1,138 @@
+.rightBar{
+   height: 100vh;
+   width: 280px;
+   position: fixed;
+   padding: 10px 5px;
+   right: 0;
+   top: 80px;
+   max-height: calc(100vh - 80px);
+   background-color: var(--primary-color);
+}
+/* Right bar user */
+.rightBar_user{
+   cursor: pointer;
+   padding: 12px 0;
+   color: white;
+   background-color: var(--text-secondary-color);
+   border-radius: 14px;
+   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+   margin-bottom: 5px;
+   /* background-color: rgb(51, 51, 51); */
+}
+.rightBar_user-top{
+   display: flex;
+   padding-left: 18px;
+   align-items: center;
+}
+.rightBar_user-top div{
+   height: 54px;
+   width: 54px;
+   background-color: var(--secondary-color);
+   border-radius: 50%;
+   margin-right: 9px;
+   background-image: url(https://play-lh.googleusercontent.com/C9CAt9tZr8SSi4zKCxhQc9v4I6AOTqRmnLchsu1wVDQL0gsQ3fmbCVgQmOVM1zPru8UH=w240-h480-rw);
+   background-position: center;
+   background-size: cover;
+   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.rightBar_user-top h4{
+   line-height: 43px;
+   font-weight: 500;
+   font-size: 19px;
+   padding-left: 4px;
+   font-family: "Titillium Web", sans-serif;
+}
+/* .rightBar_user-buttom{
+   display: flex;
+   margin-top: 15px;
+   justify-content: space-evenly;
+}
+.rightBar_user-buttom div{
+   background-color: white;
+   margin: 5px 0;
+   border-radius: 2px;
+   padding: 5px 12px;
+   text-align: center;
+   border-radius: 6px;
+   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.rightBar_user-buttom div h5{
+   font-size: 16px;
+   line-height: 15px;
+   font-weight: 600;
+   color: #004eb5;
+}
+.rightBar_user-buttom div span{
+   font-size: 15px;
+   font-weight: 600;
+   color: var(--text-color);
+} */
+/* Recent Contributions */
+.rightbar_recentCon{
+   margin: 10px 0;
+   margin-left: 15px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+}
+.rightbar_recentCon div{
+   height: 51px;
+   margin-left: -20px;
+   width: 51px;
+   background-color: var(--secondary-color);
+   border-radius: 50%;
+   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+   transition: all .2s;
+}
+.rightbar_recentCon:hover div{
+   margin-left: -15px;
+}
+.rightbar_recentCon div:last-child{
+   background-color: rgb(0, 0, 0);
+   color: white;
+   padding: 4px;
+   height: 40px;
+   width: 40px;
+   line-height: 40px;
+   text-align: center;
+}
+/* Right bar buttom */
+.rightBar label{
+   padding: 10px 0;
+   font-size: 18px;
+   font-weight: 600;
+   display: flex;
+   justify-content: space-between;
+   color: rgb(103, 103, 103);
+}
+.rightBar ul li{
+   padding: 8px 0;
+   padding-left: 13px;
+   border-radius: 5px;
+   display: flex;
+   cursor: pointer;
+   transition: all .1s;
+}
+.rightBar ul li:hover{
+   background-color: var(--secondary-color);
+   border-left: 3px solid var(--text-secondary-color);
+}
+.rightBar ul li div{
+   height: 44px;
+   width: 44px;
+   background-color: var(--secondary-color);
+   border-radius: 20%;
+   margin-right: 9px;
+   background-image: url();
+   background-position: center;
+   background-size: cover;
+}
+.rightBar ul li h4{
+   line-height: 43px;
+   font-weight: 400;
+   font-size: 16px;
+   padding-left: 3px;
+   /* color: #ffffff; */
+   font-family: "Titillium Web", sans-serif;
+}
