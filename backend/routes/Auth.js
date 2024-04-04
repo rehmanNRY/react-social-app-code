@@ -106,4 +106,39 @@ router.get('/allusers', async (req, res) => {
    }
 });
 
+// Route 5: Get user details using user id POST "/api/auth/userdetail" : Login not require
+router.post('/userdetail', async (req,res) => {
+   try {
+      const {userId} = req.body;
+      let user = await User.findById(userId).select("-password");
+      res.send(user);
+   } catch (error) {
+      console.error(error);
+      res.status(400).json({ error: "Internal server error" });
+   }
+})
+
+
+// Route 6: Update profile picture using POST "/api/auth/updateProfilePic" : Login required
+router.post('/updateProfilePic', fetchUser, async (req, res) => {
+   try {
+      const userId = req.user.id;
+      const { profilePic } = req.body;
+
+      // Update the user's profile picture
+      let user = await User.findByIdAndUpdate(userId, { profilePic }, { new: true });
+
+      if (!user) {
+         return res.status(404).json({ error: "User not found" });
+      }
+
+      res.json(user);
+   } catch (error) {
+      console.error(error);
+      res.status(400).json({ error: "Internal server error" });
+   }
+});
+
+
+
 module.exports = router;

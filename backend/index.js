@@ -11,6 +11,7 @@ const port = 5000;
 
 // Avalible routes
 app.use("/api/auth", require("./routes/Auth"));
+app.use("/api/FriendRequests", require("./routes/FriendRequests"));
 app.use("/api/post", require("./routes/Post"));
 
 const start =()=>{
