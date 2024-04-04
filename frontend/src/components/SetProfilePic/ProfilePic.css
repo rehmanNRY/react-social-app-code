@@ -1,0 +1,124 @@
+.setProfilePic{
+  height: 100vh;
+  background-image: url(https://cdn.fexpink.com/smmlive/images/section-type-second.webp);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: bgAni 6s infinite;
+}
+@keyframes bgAni{
+  0%{
+    background-position: bottom right;
+  }
+  50%{
+    background-position: top right;
+  }
+  100%{
+    background-position: bottom right;
+  }
+}
+.setProfile_main{
+  background-color: var(--primary-color);
+  padding: 20px 35px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* width: 500px; */
+}
+.setProfile_clsBtn{
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
+  border: none;
+  outline: none;
+  height: 44px;
+  width: 44px;
+  color: rgb(51, 51, 51);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  cursor: pointer;
+}
+.setProfile_clsBtn svg{
+  height: 27px;
+  width: 27px;
+  stroke-width: 1.7;
+  color: var(--text-secondary-color);
+}
+.setprofileTop {
+  display: flex;
+  align-items: center;
+}
+.setProfile_main .oldPic{
+  height: 200px;
+  width: 170px;
+  background-color: var(--secondary-color);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* background-image: url(); */
+  margin: 10px 0;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.oldPic::before{
+  content: 'Enter Valid Link';
+  position: absolute;
+  top: 80px;
+  left: 25px;
+}
+.setProfile_main .oldPic div{
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.setProfile_text{
+  margin-left: 20px;
+}
+.setProfile_text h3{
+  font-size: 29px;
+  color: var(--text-secondary-color);
+}
+.setProfile_text h4{
+  font-size: 21px;
+}
+/* Form */
+.setProfile_form form{
+  padding: 2px;
+  /* border: 2px solid rgb(139, 139, 139); */
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.setProfile_form form input{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0 5px;
+  padding-left: 20px;
+  font-size: 15px;
+  min-width: 300px;
+  border-radius: 5px;
+  border-left: 4px solid var(--text-secondary-color);
+}
+.setProfile_form form button{
+  background-color: var(--text-secondary-color);
+  color: white;
+  border-radius: 10px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.setProfile_form form button svg{
+  padding-right: 8px;
+}

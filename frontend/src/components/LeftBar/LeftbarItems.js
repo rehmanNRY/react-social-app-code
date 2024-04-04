@@ -1,13 +1,13 @@
 export const leftbarItems = [
 { name: "Home" },
+{ name: "Profile" },
 { name: "Friends" },
 { name: "Friend Requests" },
-{ name: "Groups" },
+{ name: "Sent Requests" },
+{ name: "My Posts" },
 { name: "People" },
-{ name: "Pages" },
-{ name: "Settings" },
-{ name: "Notifications" },
 { name: "Bookmarks"},
+{ name: "Settings" },
 { name: "Feedback" },
 { name: "Contact" }
 ];

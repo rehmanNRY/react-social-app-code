@@ -6,96 +6,103 @@ import deletePostApi from '../containers/functions/post/deletePostApi';
 import publishPostApi from '../containers/functions/post/publishPostApi';
 import fetchPostsApi from '../containers/functions/post/fetchPostsApi';
 
-const Posts = () => {
+const Posts = ({ postUserCheck }) => {
   const [posts, setPosts] = useState([]);
-  const [post_desc, setPost_desc] = useState("")
-  const [user_name, setUser_name] = useState("")
+  const [post_desc, setPost_desc] = useState("");
+  const [user, setUser] = useState({});
+  const [showPostForm, setShowPostForm] = useState(true); // Show post form by default
+
   useEffect(() => {
-    // Getting user detai;
-    const userDetail = async ()=>{
-      const user = await userDetailApi();
-      setUser_name(user.name);
-    }
-    userDetail();
-    // Fetching posts
     const fetchData = async () => {
-      await fetchPosts();
+      try {
+        const json = await fetchPostsApi();
+        setPosts(json);
+      } catch (error) {
+        console.log("Some error occurred");
+      }
     };
+
+    const userDetail = async () => {
+      try {
+        const user = await userDetailApi();
+        setUser(user);
+        // Set showPostForm to true if postUserCheck doesn't exist or is null
+        setShowPostForm(!postUserCheck || postUserCheck === user._id);
+      } catch (error) {
+        console.log("Some error occurred");
+      }
+    };
+
     fetchData();
-  }, []);
-  const fetchPosts = async () => {
-    try {
-      const json = await fetchPostsApi();
-      setPosts(json);
-    } catch (error) {
-      console.log("Some error occured")
-    }
-  }
-  // Post description on change
+    userDetail();
+  }, [postUserCheck]);
+
   const post_descChng = (e) => {
-    setPost_desc(e.target.value)
-  }
-  // New post api call
+    setPost_desc(e.target.value);
+  };
+
   const publishPost = async (description) => {
     try {
       const json = await publishPostApi(description);
-      // Updating post in ui
-      setPosts([json, ...posts ]);
-      // Setting New post description to blank
+      setPosts([json, ...posts]);
       setPost_desc("");
     } catch (error) {
-      console.log("Some error occured");
+      console.log("Some error occurred");
     }
-  }
-  // Making new post
+  };
+
   const newPost = (e) => {
     e.preventDefault();
     publishPost(post_desc);
-  }
-  // Delete Post
+  };
+
   const deletePost = async (id) => {
     try {
       const json = await deletePostApi(id);
-      // Update posts in UI
-      if(json.success){
+      if (json.success) {
         setPosts([...posts, json]);
-        // Deleting from UI
-        const newPosts = posts.filter((post) => { return post._id !== id });
+        const newPosts = posts.filter((post) => post._id !== id);
         setPosts(newPosts);
-      }else{
-        console.log("Some error occured", json)
+      } else {
+        console.log("Some error occurred", json);
       }
     } catch (error) {
-      console.log("Some error occured")
+      console.log("Some error occurred");
     }
-  }
+  };
+
   return (
     <div className='posts_main'>
-      <form className="posts-new_post" autoComplete='off' onSubmit={newPost}>
-        <div className='posts-new_post-top'>
-          <div></div>
-          <input type="text" value={post_desc} name="post_desc" required onChange={post_descChng} placeholder={`What's in your mind today, ${user_name || "user"}?`} />
-        </div>
-        <div className='posts-new_post-bottom'>
-          <ul>
-            <li><i className='bx bx-camera'></i></li>
-            <li><i className='bx bx-image' ></i></li>
-            <li><i className='bx bx-paperclip' ></i></li>
-            <li><i className='bx bxs-edit-location'></i></li>
-            <li><i className='bx bx-face'></i></li>
-          </ul>
-          <div>
-            <button type="button" style={{ cursor: "not-allowed" }}>Draft</button>
-            <button type="submit">Post</button>
+      {showPostForm && ( // Conditionally render post form
+        <form className="posts-new_post" autoComplete='off' onSubmit={newPost}>
+          <div className='posts-new_post-top'>
+            <div style={{backgroundImage: `url(${user.profilePic})`}}></div>
+            <input type="text" value={post_desc} name="post_desc" required onChange={post_descChng} placeholder={`What's in your mind today, ${user.name || "user"}?`} />
           </div>
-        </div>
-      </form>
+          <div className='posts-new_post-bottom'>
+            <ul>
+              <li><i className='bx bx-camera'></i></li>
+              <li><i className='bx bx-image' ></i></li>
+              <li><i className='bx bx-paperclip' ></i></li>
+              <li><i className='bx bxs-edit-location'></i></li>
+              <li><i className='bx bx-face'></i></li>
+            </ul>
+            <div>
+              <button type="button" style={{ cursor: "not-allowed" }}>Draft</button>
+              <button type="submit">Post</button>
+            </div>
+          </div>
+        </form>
+      )}
       {posts.length === 0 && <h3 className='noPostText'>No posts to show</h3>}
       {posts.map((post) => {
-        return <Post key={post._id}  post={post} deletePost={deletePost} />;
+        if (!postUserCheck || postUserCheck === post.user) {
+          return <Post key={post._id} post={post} deletePost={deletePost} />;
+        }
+        return null;
       })}
     </div>
-  )
-}
+  );
+};
 
-export default Posts
+export default Posts;

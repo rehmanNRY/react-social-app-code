@@ -1,26 +1,33 @@
 .friends_suggestion{
   display: flex;
-  padding: 0 10px;
+  padding: 15px 10px;
+  justify-content: space-around;
 }
 .friend_suggested{
-  background-color: var(--secondary-color);
+  background-color: rgb(254, 254, 254);
   border-radius: 10px;
-  padding: 18px 12px;
-  margin: 0 5px;
+  padding-bottom: 10px;
+  overflow: hidden;
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .friend_suggested .friend_suggestPic{
-  height: 90px;
-  width: 90px;
+  height: 170px;
+  width: 180px;
   background-color: var(--primary-color);
-  border-radius: 50%;
+  background-image: url(https://i.pinimg.com/736x/3c/f2/58/3cf258f4e4b397da09475aa02276bc7c.jpg);
+  background-position: center;
+  background-size: cover;
+  /* border-radius: 50%; */
   margin: 0 auto;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .friend_suggested h3{
-  line-height: 60px;
+  line-height: 50px;
   font-weight: 500;
+  text-align: left;
+  font-size: 18px;
+  padding-left: 15px;
 }
 .friend_suggested button{
   background-color: var(--text-secondary-color);

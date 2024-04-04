@@ -248,9 +248,6 @@
 .comments .comments_bottom button:hover{
    text-decoration: underline;
 }
-.comments .comments_bottom:hover{
-   background-color: #1f1f1f;
-}
 /* Comments sort */
 .cmnts_sort{
    display: flex;

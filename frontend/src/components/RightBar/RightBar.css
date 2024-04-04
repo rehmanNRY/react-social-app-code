@@ -30,7 +30,6 @@
    background-color: var(--secondary-color);
    border-radius: 50%;
    margin-right: 9px;
-   background-image: url(https://play-lh.googleusercontent.com/C9CAt9tZr8SSi4zKCxhQc9v4I6AOTqRmnLchsu1wVDQL0gsQ3fmbCVgQmOVM1zPru8UH=w240-h480-rw);
    background-position: center;
    background-size: cover;
    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -80,7 +79,9 @@
    height: 51px;
    margin-left: -20px;
    width: 51px;
-   background-color: var(--secondary-color);
+   /* background-color: var(--secondary-color); */
+   background-position: center;
+   background-size: cover;
    border-radius: 50%;
    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
    transition: all .2s;
@@ -124,7 +125,6 @@
    background-color: var(--secondary-color);
    border-radius: 20%;
    margin-right: 9px;
-   background-image: url();
    background-position: center;
    background-size: cover;
 }
@@ -133,6 +133,5 @@
    font-weight: 400;
    font-size: 16px;
    padding-left: 3px;
-   /* color: #ffffff; */
    font-family: "Titillium Web", sans-serif;
 }

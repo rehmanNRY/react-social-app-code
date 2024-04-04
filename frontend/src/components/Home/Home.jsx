@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TopBar from "../TopBar/TopBar";
 import LeftBar from "../LeftBar/LeftBar";
-// import RightBar from "../RightBar/RightBar";
-// import Posts from "../Posts/Posts";
-import UserProfile from "../UserProfile/UserProfile";
+import RightBar from "../RightBar/RightBar";
+import Posts from "../Posts/Posts";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -20,9 +19,8 @@ const Home = () => {
     <TopBar />
     <div style={{ display: "flex", justifyContent: "space-between" }}>
       <LeftBar />
-      <UserProfile/>
-      {/* <Posts /> */}
-      {/* <RightBar /> */}
+      <Posts postUserCheck={false}/>
+      <RightBar />
     </div>
     </>
   );

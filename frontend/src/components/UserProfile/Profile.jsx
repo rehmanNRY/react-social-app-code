@@ -5,26 +5,23 @@ import {
   Home,
   UserCheck,
   PlusSquare,
-  // User,
-  // Book,
   Settings,
-  // Bell,
-  // Users,
   Bookmark,
   Mail,
   Smile,
-  // LogOut,
 } from "react-feather";
+import Posts from '../Posts/Posts';
+import RightBar from "../RightBar/RightBar";
 
-const Profile = () => {
+const Profile = ({user}) => {
   return (
     <div className='UserProfile'>
       <div className="profile_top">
         <div className="profile_cover"></div>
         <div className="profile_data">
-          <div className="profile_pic"></div>
+          <div className="profile_pic" style={{backgroundImage: `url(${user.profilePic})`}}></div>
           <div className="profile_info">
-            <h3>Abdul Rehman</h3>
+            <h3>{user.name}</h3>
             <p>Here i am using Facebook your.</p>
           </div>
           <div className="profile_btns">
@@ -54,6 +51,10 @@ const Profile = () => {
           </div>
         </div>
         <FriendsSuggestion/>
+      </div>
+      <div className="userProfile_posts">
+        <Posts postUserCheck={user._id}/>
+        <RightBar />
       </div>
     </div>
   )

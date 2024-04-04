@@ -2,12 +2,35 @@ import React, { useEffect, useState } from 'react'
 import './RightBar.css'
 import getAllUsersApi from '../containers/functions/user/getAllUsersApi';
 import userDetailApi from '../containers/functions/user/userDetailApi';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const RightBar = () => {
+  // navigateToPath on click on item
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const [newPath, setNewPath] = useState('');
+  const navigateToPath = (path) => {
+    // Clear previous path
+    const currentPath = location.pathname;
+    let updatedPath = '';
+    // Navigate to the new path
+    setNewPath(`/${path}`);
+  };
+
+
    // Other users list
    const [users, setUsers] = useState([])
-   const [userData, setUserData] = useState([])
+   const [userData, setUserData] = useState({})
    useEffect(() => {
+      
+      // Navigating
+      if (newPath !== '') {
+      window.history.replaceState(null, '', newPath);
+      navigate(newPath);
+      }
+
+
       // Getting user detail
       const userDetail = async ()=>{
          const user = await userDetailApi();
@@ -21,12 +44,13 @@ const RightBar = () => {
      }
      getAllusers();
       // eslint-disable-next-line
-   }, [])
+   }, [newPath])
+
    return (
       <div className='rightBar'>
-         <div className="rightBar_user">
+         <div className="rightBar_user" onClick={()=>{navigateToPath(`Profile/${userData._id}`)}}>
             <div className="rightBar_user-top">
-               <div></div>
+               <div style={{backgroundImage: `url(${userData.profilePic})`}}></div>
                <h4>{userData.name}</h4>
             </div>
             {/* <div className="rightBar_user-buttom">
@@ -37,15 +61,15 @@ const RightBar = () => {
          </div>
          <label>Recent Contributions</label>
          <div className="rightbar_recentCon">
-            {[1,2,3,4,5,6].map((user)=> <div key={user}></div>)}
-            <div>8+</div>
+            {users.slice(0, 6).map((user)=> <div style={{backgroundImage: `url(${user.profilePic})`}} key={user._id}></div>)}
+            <div>{users.length}+</div>
          </div>
          <label>Other Users</label>
          <ul>
             {users.map((user)=>{
                return (
-                  <li key={user._id}>
-                     <div></div>
+                  <li key={user._id} onClick={()=>{navigateToPath(`Profile/${user._id}`)}}>
+                     <div style={{backgroundImage: `url(${user.profilePic})`}}></div>
                      <h4>{user.name}</h4>
                   </li>
                ) 
@@ -55,8 +79,8 @@ const RightBar = () => {
          <ul>
             {users.map((user)=>{
                return (
-                  <li key={user._id}>
-                     <div></div>
+                  <li key={user._id} onClick={()=>{navigateToPath(`Profile/${user._id}`)}}>
+                     <div style={{backgroundImage: `url(${user.profilePic})`}}></div>
                      <h4>{user.name}</h4>
                   </li>
                ) 
