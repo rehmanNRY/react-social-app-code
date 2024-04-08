@@ -50,11 +50,11 @@
 .profile_info p{
   color: rgb(51, 51, 51);
 }
-.user_profile-btns{
+.profile_top .user_profile-btns{
   margin-top: 30px;
   margin-left: 110px;
 }
-.user_profile-btns button{
+.profile_top .user_profile-btns button{
   background-color: var(--text-secondary-color);
   border-radius: 9px;
   padding: 11px 27px;
@@ -66,16 +66,16 @@
   padding-left: 48px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.user_profile-btns button:last-child{
+.profile_top .user_profile-btns button:last-child{
   margin-left: 7px;
   background-color: #4f515b;
 }
-.user_profile-btns button span{
+.profile_top .user_profile-btns button span{
   position: absolute;
   margin-left: -30px;
   margin-top: -1px;
 }
-.user_profile-btns button span i{
+.profile_top .user_profile-btns button span i{
   font-size: 23px;
 }
 /* Profile menu */

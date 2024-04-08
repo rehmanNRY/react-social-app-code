@@ -23,6 +23,7 @@
   font-size: 15px;
   text-decoration: none;
   transition: all 0.1s linear;
+  cursor: pointer;
 }
 .main-menu ul:nth-child(1) li:nth-child(1) a, .main-menu li a:hover{
   background-color: var(--secondary-color);
@@ -49,4 +50,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
+}
+.leftBar_svg{
+  margin-top: -45px;
 }

@@ -3,7 +3,13 @@
 /* https://spellquiz.com/upload/file?d=user-avatars/avatar-12.png */
 .noPostText{
    text-align: center;
-   color: white;
+   color: var(--text-color);
+}
+.postsHeadingProp{
+   text-align: center;
+   color: var(--text-secondary-color);
+   font-size: 22px;
+   padding: 10px 4px;
 }
 .posts_main{
    background-color: var(--secondary-color);

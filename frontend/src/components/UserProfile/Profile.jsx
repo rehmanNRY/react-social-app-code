@@ -53,7 +53,7 @@ const Profile = ({user}) => {
         <FriendsSuggestion/>
       </div>
       <div className="userProfile_posts">
-        <Posts postUserCheck={user._id}/>
+        <Posts postUserCheck={user._id} heading={false}/>
         <RightBar />
       </div>
     </div>

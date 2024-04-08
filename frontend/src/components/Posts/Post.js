@@ -8,6 +8,7 @@ import deleteCommentApi from "../containers/functions/likeShareComment/deleteCom
 import bookmarkPostApi from "../containers/functions/bookmark/bookmarkPostApi";
 import bookmarkListApi from "../containers/functions/bookmark/bookmarkListApi";
 import userDetailUsingId from "../containers/functions/user/userDetailUsingId";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Post = (props) => {
   const { user_name, description, likes, date } = props.post;
@@ -36,8 +37,27 @@ const Post = (props) => {
   const [userData, setUserData] = useState({});
   const [postUser, setPostUser] = useState({});
   const [commentUser, setCommentUser] = useState([]);
+
+  // navigateToPath on click on item
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const [newPath, setNewPath] = useState('');
+  const navigateToPath = (path) => {
+    // Clear previous path
+    const currentPath = location.pathname;
+    let updatedPath = '';
+    // Navigate to the new path
+    setNewPath(`/${path}`);
+  };
   // Getting user detail
   useEffect(() => {
+    // Navigating
+    if (newPath !== '') {
+      window.history.replaceState(null, '', newPath);
+      navigate(newPath);
+    }
+    
     // Getting user detail
     const userDetail = async () => {
       const user = await getUserDetail();
@@ -78,7 +98,7 @@ const Post = (props) => {
     };
     bookmarkList();
     // eslint-disable-next-line
-  }, [likes, userId]);
+  }, [likes, userId, newPath]);
 
   const postMenuClick = () => {
     if (post_menu === "visible") {
@@ -183,14 +203,15 @@ const Post = (props) => {
     setBookmarked(json.success === "Post bookmarked successfully");
   };
   return (
-    <div className="post">
+    <>
+    {(!(props.bookmarksCheck) || (props.bookmarksCheck && bookmarked)) && (<div className="post">
       <div
         className="user_profile"
         style={{ display: `${userProfile}` }}
         onMouseOver={displayUserProfile}
         onMouseOut={hideUserProfile}
       >
-        <div>
+        <div onClick={()=>{navigateToPath(`Profile/${postUser._id}`)}} className="user_profile_Top">
           <div style={{ backgroundImage: `url(${postUser.profilePic})` }}></div>
           <h4>{user_name}</h4>
         </div>
@@ -214,6 +235,7 @@ const Post = (props) => {
           className="post_profile"
           onMouseOver={displayUserProfile}
           onMouseOut={hideUserProfile}
+          onClick={()=>{navigateToPath(`Profile/${postUser._id}`)}}
         >
           <div
             className="post_profile-pic"
@@ -365,40 +387,45 @@ const Post = (props) => {
               <div
                 className="commentProfilePic"
                 style={{ backgroundImage: `url(${userDetail?.profilePic})` }}
+                onClick={()=>{navigateToPath(`Profile/${comment.user_id}`)}}
               ></div>
-              <div>
-                <h4>
+              <div className="commentDes_div">
+                <div className="comment_topBar">
+                  <h4 onClick={()=>{navigateToPath(`Profile/${comment.user_id}`)}}>
                   {comment.user_name}:
-                  {userId === comment.user_id && (
-                    <div
-                      className="comment_menu"
-                      onClick={() => commentMenuClick(comment._id)}
-                      style={{
-                        visibility: isCommentMenuOpen ? "visible" : "hidden",
-                      }}
-                    >
+                  </h4>
+                  <div className="comments_MenuSection">
+                    {userId === comment.user_id && (
+                      <>
                       <button
                         type="button"
-                        onClick={() => {
-                          deleteComment(comment._id);
+                        onClick={() => commentMenuClick(comment._id)}
+                      >
+                        <i className="bx bx-dots-horizontal-rounded"></i>
+                      </button>
+                      <div
+                        className="comment_menu"
+                        onClick={() => commentMenuClick(comment._id)}
+                        style={{
+                          visibility: isCommentMenuOpen ? "visible" : "hidden",
                         }}
                       >
-                        <span>
-                          <i className="bx bxs-trash-alt"></i>
-                        </span>
-                        Delete
-                      </button>
-                    </div>
-                  )}
-                  {userId === comment.user_id && (
-                    <button
-                      type="button"
-                      onClick={() => commentMenuClick(comment._id)}
-                    >
-                      <i className="bx bx-dots-horizontal-rounded"></i>
-                    </button>
-                  )}
-                </h4>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            deleteComment(comment._id);
+                          }}
+                        >
+                          <span>
+                            <i className="bx bxs-trash-alt"></i>
+                          </span>
+                          Delete
+                        </button>
+                      </div>
+                      </>
+                    )}
+                  </div>
+                </div>
                 <p>
                   {comment.description}
                   <span>{calculateTimeAgo(comment.date)}</span>
@@ -415,7 +442,8 @@ const Post = (props) => {
           </div>
         )}
       </div>
-    </div>
+    </div>)}
+    </>
   );
 };
 

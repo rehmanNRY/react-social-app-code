@@ -6,13 +6,19 @@ import deletePostApi from '../containers/functions/post/deletePostApi';
 import publishPostApi from '../containers/functions/post/publishPostApi';
 import fetchPostsApi from '../containers/functions/post/fetchPostsApi';
 
-const Posts = ({ postUserCheck }) => {
+const Posts = ({ postUserCheck, heading, checkBookmark }) => {
+  const [bookmarksCheck, setbookmarksCheck] = useState(false);
   const [posts, setPosts] = useState([]);
   const [post_desc, setPost_desc] = useState("");
   const [user, setUser] = useState({});
   const [showPostForm, setShowPostForm] = useState(true); // Show post form by default
 
   useEffect(() => {
+    if(checkBookmark){
+      setbookmarksCheck(true)
+    }else{
+      setbookmarksCheck(false);
+    }
     const fetchData = async () => {
       try {
         const json = await fetchPostsApi();
@@ -44,12 +50,14 @@ const Posts = ({ postUserCheck }) => {
   const publishPost = async (description) => {
     try {
       const json = await publishPostApi(description);
-      setPosts([json, ...posts]);
+      // Prepend the new post to the posts array
+      setPosts([...posts, json]);
       setPost_desc("");
     } catch (error) {
       console.log("Some error occurred");
     }
   };
+  
 
   const newPost = (e) => {
     e.preventDefault();
@@ -73,7 +81,7 @@ const Posts = ({ postUserCheck }) => {
 
   return (
     <div className='posts_main'>
-      {showPostForm && ( // Conditionally render post form
+      {(showPostForm && !(checkBookmark) && !(postUserCheck)) && ( // Conditionally render post form
         <form className="posts-new_post" autoComplete='off' onSubmit={newPost}>
           <div className='posts-new_post-top'>
             <div style={{backgroundImage: `url(${user.profilePic})`}}></div>
@@ -95,9 +103,10 @@ const Posts = ({ postUserCheck }) => {
         </form>
       )}
       {posts.length === 0 && <h3 className='noPostText'>No posts to show</h3>}
-      {posts.map((post) => {
+      {heading && <h3 className='postsHeadingProp'>{heading}</h3>}
+      {posts.slice().reverse().map((post) => {
         if (!postUserCheck || postUserCheck === post.user) {
-          return <Post key={post._id} post={post} deletePost={deletePost} />;
+          return <Post key={post._id} post={post} deletePost={deletePost} bookmarksCheck={bookmarksCheck} />;
         }
         return null;
       })}

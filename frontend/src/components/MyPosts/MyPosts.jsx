@@ -1,13 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TopBar from "../TopBar/TopBar";
 import LeftBar from "../LeftBar/LeftBar";
 import RightBar from "../RightBar/RightBar";
 import Posts from "../Posts/Posts";
+import userDetailApi from "../containers/functions/user/userDetailApi";
 
-const Home = () => {
+const MyPosts = () => {
   const navigate = useNavigate();
+  const [userData, setUserData] = useState({})
   useEffect(() => {
+    // Getting user detail
+    const userDetail = async ()=>{
+      const user = await userDetailApi();
+      setUserData(user);
+    }
+    userDetail();
+
     if (!localStorage.authToken) {
       const path = "/auth";
       navigate(path);
@@ -19,11 +28,11 @@ const Home = () => {
     <TopBar />
     <div style={{ display: "flex", justifyContent: "space-between" }}>
       <LeftBar />
-      <Posts postUserCheck={false} heading={false}/>
+      <Posts postUserCheck={userData._id} heading={"My Posts"}/>
       <RightBar />
     </div>
     </>
   );
 };
 
-export default Home;
+export default MyPosts;

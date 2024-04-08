@@ -39,8 +39,8 @@ const LeftBar = () => {
     const currentPath = location.pathname;
     let updatedPath = '';
     // Navigate to the new path
-    if (path === "Friend Requests") {
-      updatedPath = "/friend-requests";
+    if (path === "My Posts") {
+      updatedPath = "/my-posts";
     } else if (path === "Profile") {
       updatedPath = `/Profile/${userData._id}`;
     } else {
@@ -72,6 +72,7 @@ const LeftBar = () => {
             <a onClick={()=> navigateToPath(item.name)}>
               {item.name === "Home" && <Home className="fa" />}
               {item.name === "Friends" && <UserCheck className="fa" />}
+              {item.name === "Friends Suggestions" && <Smile className="fa" />}
               {item.name === "Friend Requests" && <PlusSquare className="fa" />}
               {item.name === "My Posts" && <Users className="fa" />}
               {item.name === "People" && <User className="fa" />}
