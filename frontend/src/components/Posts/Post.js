@@ -8,7 +8,8 @@ import deleteCommentApi from "../containers/functions/likeShareComment/deleteCom
 import bookmarkPostApi from "../containers/functions/bookmark/bookmarkPostApi";
 import bookmarkListApi from "../containers/functions/bookmark/bookmarkListApi";
 import userDetailUsingId from "../containers/functions/user/userDetailUsingId";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { acceptFriendRequest, fetchFriendList, fetchReceivedRequests, fetchSentRequests, sendFriendRequest } from "../containers/functions/FriendRequests/FriendRequests";
 
 const Post = (props) => {
   const { user_name, description, likes, date } = props.post;
@@ -38,20 +39,42 @@ const Post = (props) => {
   const [postUser, setPostUser] = useState({});
   const [commentUser, setCommentUser] = useState([]);
 
+  const [reqIds, setReqIds] = useState([])
+  const [frndList, setFrndList] = useState([])
+  const [sentIds, setSentIds] = useState([])
   // navigateToPath on click on item
   const navigate = useNavigate();
-  const location = useLocation();
   
   const [newPath, setNewPath] = useState('');
   const navigateToPath = (path) => {
-    // Clear previous path
-    const currentPath = location.pathname;
-    let updatedPath = '';
     // Navigate to the new path
     setNewPath(`/${path}`);
   };
   // Getting user detail
   useEffect(() => {
+    // Get pending requests
+    const getPendingReq = async ()=>{
+      const penReq = await fetchReceivedRequests();
+      setReqIds(penReq.pendingRequests);
+    }
+    getPendingReq();
+
+    // Get Friend List
+    const getFriendList = async ()=>{
+      const friendList = await fetchFriendList();
+      // console.log(friendList.friends)
+      setFrndList(friendList.friends);
+    }
+    getFriendList();
+
+    // Get sent requests
+    const getSentReq = async ()=>{
+      const sentReq = await fetchSentRequests();
+      // console.log(sentReq)
+      setSentIds(sentReq);
+    }
+    getSentReq();
+
     // Navigating
     if (newPath !== '') {
       window.history.replaceState(null, '', newPath);
@@ -202,6 +225,30 @@ const Post = (props) => {
     const json = await bookmarkPostApi(postId);
     setBookmarked(json.success === "Post bookmarked successfully");
   };
+
+  // Send Request
+  const handleSendReq = async (receiverUserId) => {
+    try {
+      const reqSnd = await sendFriendRequest(receiverUserId);
+      // console.log(reqSnd);
+      setSentIds([...sentIds, receiverUserId]);
+      // alert('Friend request sent successfully!');
+    } catch (error) {
+      console.error('Error sending friend request:', error);
+    }
+  };
+
+  // Accept Request
+  const handleAcceptReq = async (senderId) => {
+    try {
+      const acceptSnd = await acceptFriendRequest(senderId);
+      // console.log(acceptSnd);
+      setFrndList([...frndList, senderId]);
+      // alert('Friend request sent successfully!');
+    } catch (error) {
+      console.error('Error accepting friend request:', error);
+    }
+  };
   return (
     <>
     {(!(props.bookmarksCheck) || (props.bookmarksCheck && bookmarked)) && (<div className="post">
@@ -216,13 +263,37 @@ const Post = (props) => {
           <h4>{user_name}</h4>
         </div>
         <div className="user_profile-btns">
-          <button type="button">
+          {(userId !== postUser._id) && !sentIds.some(element => element === postUser._id) && !reqIds.some(element => element === postUser._id) && !frndList.some(element => element === postUser._id) && <button type="button" onClick={()=>{handleSendReq(userId)}}>
             <span>
               <i className="bx bxs-user-plus"></i>
             </span>
-            Add friend
-          </button>
-          <button type="button">
+            Send Request
+          </button> }
+          {(userId !== postUser._id) && !reqIds.some(element => element === postUser._id) && !frndList.some(element => element === postUser._id) && sentIds.some(element => element === postUser._id) && <button type="button">
+            <span>
+              <i className='bx bxs-user-check' ></i>
+            </span>
+            Request Sent
+          </button> }
+          {(userId !== postUser._id) && !sentIds.some(element => element === postUser._id) && reqIds.some(element => element === postUser._id) && !frndList.some(element => element === postUser._id) && <button type="button" onClick={()=>{handleAcceptReq(postUser._id)}}>
+            <span>
+              <i className="bx bxs-user-plus"></i>
+            </span>
+            Accept Request
+          </button>}
+          {(userId !== postUser._id) && frndList.some(element => element === postUser._id) && !reqIds.some(element => element === postUser._id) && !sentIds.some(element => element === postUser._id) && <button type="button">
+            <span>
+            <i className='bx bxs-heart-circle'></i>
+            </span>
+            Friends
+          </button>}
+          {(userId === postUser._id) && !frndList.some(element => element === postUser._id) && !reqIds.some(element => element === postUser._id) && !sentIds.some(element => element === postUser._id) && <button type="button">
+            <span>
+            <i className='bx bxs-heart-square' ></i>
+            </span>
+            Your account
+          </button>}
+          <button type="button" onClick={()=>{navigateToPath(`Profile/${postUser._id}`)}}>
             <span>
               <i className="bx bxs-user-circle"></i>
             </span>

@@ -25,7 +25,7 @@
   transition: all 0.1s linear;
   cursor: pointer;
 }
-.main-menu ul:nth-child(1) li:nth-child(1) a, .main-menu li a:hover{
+.main-menu ul li.activeItem a, .main-menu li a:hover{
   background-color: var(--secondary-color);
   color: var(--text-secondary-color);
   border-left: 3px solid var(--text-secondary-color);

@@ -1,5 +1,6 @@
 .setProfilePic{
   height: 100vh;
+  width: 100vw;
   background-image: url(https://cdn.fexpink.com/smmlive/images/section-type-second.webp);
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -7,6 +8,7 @@
   justify-content: center;
   align-items: center;
   animation: bgAni 6s infinite;
+  padding-left: 80px;
 }
 @keyframes bgAni{
   0%{

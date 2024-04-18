@@ -88,7 +88,7 @@ const Form = () => {
             // Saving token in local storage
             localStorage.setItem('authToken', myJson.authToken);
             // Redirecting to the Success path
-            const path = "/home";
+            const path = "/set-profile-pic";
             navigate(path);
             // console.log(myJson.authToken)
          }

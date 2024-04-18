@@ -96,6 +96,7 @@
 }
 .profile_menu ul li:hover{
   background-color: var(--secondary-color);
+  border-bottom: 3px solid var(--text-secondary-color);
 }
 .profile_menu ul li:nth-child(1){
   border-bottom: 3px solid var(--text-secondary-color);

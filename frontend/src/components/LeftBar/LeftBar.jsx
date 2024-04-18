@@ -1,104 +1,75 @@
 import React, { useState, useEffect } from "react";
 import "./LeftBar.css";
 import { ReactComponent as LineSvg2 } from "./LineSvg2.svg";
-import {
-  Home,
-  UserCheck,
-  PlusSquare,
-  User,
-  Book,
-  Settings,
-  Bell,
-  Users,
-  Bookmark,
-  Mail,
-  Smile,
-  LogOut,
-} from "react-feather";
-import { leftbarItems } from "./LeftbarItems";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Home, UserCheck, PlusSquare, User, Book, Settings, Users, Bookmark, Mail, Smile, LogOut } from "react-feather";
+import { useLocation, useNavigate } from "react-router-dom";
 import userDetailApi from "../containers/functions/user/userDetailApi";
 
 const LeftBar = () => {
-  const [userData, setUserData] = useState({})
+  const [userData, setUserData] = useState({});
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // Logout
+  useEffect(() => {
+    const fetchData = async () => {
+      const user = await userDetailApi();
+      setUserData(user);
+    };
+    fetchData();
+  }, []);
+
+  const navigationItems = [
+    { icon: <Home className="fa" />, text: "Home", path: "/Home" },
+    { icon: <User className="fa" />, text: "My Profile", path: `/Profile/${userData._id}` },
+    { icon: <Smile className="fa" />, text: "Update picture", path: "/set-profile-pic" },
+    { icon: <Users className="fa" />, text: "My Posts", path: "/my-posts" },
+    { icon: <Bookmark className="fa" />, text: "Bookmarks", path: "/Bookmarks" },
+    { icon: <UserCheck className="fa" />, text: "Friend List", path: "/Friends" },
+    { icon: <Smile className="fa" />, text: "Friends Suggestions", path: "/Friends-Suggestions" },
+    { icon: <Book className="fa" />, text: "Sent Requests", path: "/Sent-Requests" },
+    { icon: <PlusSquare className="fa" />, text: "Friend Requests", path: "/Friend-Requests" },
+    { icon: <User className="fa" />, text: "Other Users", path: "/People" },
+    { icon: <Settings className="fa" />, text: "Settings", path: "/Settings" },
+    { icon: <Mail className="fa" />, text: "Contact", path: "/Contact" }
+  ];
+
+  const isActiveItem = (path) => location.pathname === path;
+
   const logout = () => {
     if (localStorage.authToken) {
       localStorage.removeItem("authToken");
     }
   };
 
-  // navigateToPath on click on items on left bar
-  const navigate = useNavigate();
-  const location = useLocation();
-  
-  const [newPath, setNewPath] = useState('');
   const navigateToPath = (path) => {
-    // Clear previous path
-    const currentPath = location.pathname;
-    let updatedPath = '';
-    // Navigate to the new path
-    if (path === "My Posts") {
-      updatedPath = "/my-posts";
-    } else if (path === "Profile") {
-      updatedPath = `/Profile/${userData._id}`;
-    } else {
-      updatedPath = `/${path}`;
-    }
-    setNewPath(updatedPath);
+    navigate(path);
   };
-
-  useEffect(() => {
-    // Getting user detail
-    const userDetail = async ()=>{
-      const user = await userDetailApi();
-      setUserData(user);
-    }
-    userDetail();
-
-    // Navigating
-    if (newPath !== '') {
-      window.history.replaceState(null, '', newPath);
-      navigate(newPath);
-    }
-  }, [newPath]);
 
   return (
     <div className="leftBar">
-    <nav className="main-menu">
-      <ul>
-        {leftbarItems.map((item)=><li key={item.name}>
-            <a onClick={()=> navigateToPath(item.name)}>
-              {item.name === "Home" && <Home className="fa" />}
-              {item.name === "Friends" && <UserCheck className="fa" />}
-              {item.name === "Friends Suggestions" && <Smile className="fa" />}
-              {item.name === "Friend Requests" && <PlusSquare className="fa" />}
-              {item.name === "My Posts" && <Users className="fa" />}
-              {item.name === "People" && <User className="fa" />}
-              {item.name === "Profile" && <User className="fa" />}
-              {item.name === "Settings" && <Settings className="fa" />}
-              {item.name === "Sent Requests" && <Book className="fa" />}
-              {item.name === "Bookmarks" && <Bookmark className="fa" />}
-              {item.name === "Feedback" && <Smile className="fa" />}
-              {item.name === "Contact" && <Mail className="fa" />}
-              <span className="nav-text">{item.name}</span>
+      <nav className="main-menu">
+        <ul>
+          {navigationItems.map((item, index) => (
+            <li key={index} className={isActiveItem(item.path) ? "activeItem" : ""}>
+              <a onClick={() => navigateToPath(item.path)}>
+                {item.icon}
+                <span className="nav-text">{item.text}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div className="leftBar_svg">
+          <LineSvg2 />
+        </div>
+        <ul className="logout">
+          <li>
+            <a href="/" onClick={logout}>
+              <LogOut className="fa" />
+              <span className="nav-text">Logout</span>
             </a>
           </li>
-        )}
-      </ul>
-      <div className="leftBar_svg">
-      <LineSvg2/>
-      </div>
-      <ul className="logout">
-        <li>
-          <a href="/" onClick={logout}>
-            <LogOut className="fa" />
-            <span className="nav-text">Logout</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+        </ul>
+      </nav>
     </div>
   );
 };

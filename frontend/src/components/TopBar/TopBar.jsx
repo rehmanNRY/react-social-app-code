@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./TopBar.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import getUserDetail from "../containers/functions/user/userDetailApi";
 
 const TopBar = () => {
@@ -11,13 +11,9 @@ const TopBar = () => {
 
   // navigateToPath on click on item
   const navigate = useNavigate();
-  const location = useLocation();
   
   const [newPath, setNewPath] = useState('');
   const navigateToPath = (path) => {
-    // Clear previous path
-    const currentPath = location.pathname;
-    let updatedPath = '';
     // Navigate to the new path
     setNewPath(`/${path}`);
   };
@@ -47,7 +43,7 @@ const TopBar = () => {
       document.removeEventListener("click", handleClickOutside);
     };
 
-
+    // eslint-disable-next-line
   }, [newPath]);
 
   const toggleSearchMenu = () => {

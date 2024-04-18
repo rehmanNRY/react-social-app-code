@@ -1,0 +1,100 @@
+.contact_main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  padding-left: 70px;
+  background-image: url(https://cdn.fexpink.com/smmlive/images/section-type-second.webp);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  animation: bgAni 6s infinite;
+}
+@keyframes bgAni{
+  0% {
+    background-position: bottom right;
+  }
+  50% {
+      background-position: top right;
+  }
+  100% {
+      background-position: bottom right;
+  }
+}
+.contact_data{
+  padding-bottom: 40px;
+}
+.contact_item {
+  margin: 25px 0;
+}
+.contact_item a{
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+.contact_item .contact_left {
+  height: 42px;
+  width: 42px;
+  position: relative;
+  margin-right: 18px;
+}
+.contact_item .contact_left::before {
+  position: absolute;
+  content: "";
+  width: 35px;
+  height: 35px;
+  filter: blur(20px);
+  left: calc(50% - 20px);
+  top: 8px;
+  background: #6C42BD;
+  opacity: 0.5;
+  z-index: -1;
+}
+.contact_item:nth-child(2) .contact_left::before{
+  background: #B233AB;
+}
+.contact_item:nth-child(3) .contact_left::before{
+  background: #1D9BF0;
+}
+.contact_item .contact_left div {
+  height: 100%;
+  width: 100%;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYrgjZVYT0sxSCRszjJuS3WQcAk8MPmHxntLon0awmKw&s);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  position: relative;
+}
+.contact_item:nth-child(2) .contact_left div{
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/600px-Instagram_icon.png);
+  border-radius: 0;
+}
+.contact_item:nth-child(3) .contact_left div{
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png);
+  background-size: contain;
+  border-radius: 0;
+}
+.contact_item span{
+  color: #0d0c22;
+  font-weight: 600;
+  font-size: 20px;
+  border-bottom: 3px solid var(--text-secondary-color);
+}
+.contact_item span:hover{
+  border-bottom: 5px solid var(--text-secondary-color);
+}
+.contact_item .contact_right{
+  visibility: hidden;
+  margin-left: 10px;
+}
+.contact_item a:hover .contact_right{
+  visibility: visible;
+}
+.contact_item .contact_right svg{
+  stroke-width: 2.2px;
+  padding-top: 11px;
+  height: 23px;
+}
