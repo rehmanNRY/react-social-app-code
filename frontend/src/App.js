@@ -16,6 +16,7 @@ import SentReq from "./components/SentRequests/SentReq";
 import FriendList from "./components/FriendList/FriendList";
 import Contact from "./components/Contact/Contact";
 import Settings from "./components/SettingsPage/Settings";
+import './Responsive.css'
 
 function App() {
    return (

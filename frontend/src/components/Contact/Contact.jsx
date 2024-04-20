@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TopBar from "../TopBar/TopBar";
 import LeftBar from "../LeftBar/LeftBar";
@@ -17,9 +17,11 @@ const Contact = () => {
   return (
     <>
     <TopBar />
-    <div style={{ display: "flex"}}>
       <LeftBar />
       <div className="contact_main">
+        <h2>Contact, Abdul Rehman</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio porro expedita nobis corrupti beatae itaque doloribus ad quos quae iusto.</p>
+        <div className="contact_links">
         <div className="contact_data">
           <div className="contact_item">
             <a href="/" target="_blank">
@@ -43,8 +45,8 @@ const Contact = () => {
             </a>
           </div>
         </div>
+        </div>
       </div>
-    </div>
     </>
   );
 };

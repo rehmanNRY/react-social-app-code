@@ -4,8 +4,8 @@
   --primary-color: white;
   --secondary-color: #F5F6FA;
   --text-color: black;
+  --text-secondary-color: #7F56D9;
   /* --text-secondary-color: #2F80ED; */
-  --text-secondary-color: #037ef3;
   /* --primary-color: #030000;
   --secondary-color: #30302c;
   --text-color: black;
@@ -18,9 +18,6 @@
 
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Poppins", sans-serif;

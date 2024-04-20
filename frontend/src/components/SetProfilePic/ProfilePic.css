@@ -1,32 +1,21 @@
 .setProfilePic{
-  height: 100vh;
-  width: 100vw;
-  background-image: url(https://cdn.fexpink.com/smmlive/images/section-type-second.webp);
-  background-repeat: no-repeat;
-  background-position: bottom right;
+  background-color: var(--secondary-color);
+  max-width: calc(100vw - 290px);
+  min-height: calc(100vh - 100px);
+  margin-left: 280px;
+  padding-top: 100px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  animation: bgAni 6s infinite;
-  padding-left: 80px;
-}
-@keyframes bgAni{
-  0%{
-    background-position: bottom right;
-  }
-  50%{
-    background-position: top right;
-  }
-  100%{
-    background-position: bottom right;
-  }
+  justify-content: center;
 }
 .setProfile_main{
   background-color: var(--primary-color);
   padding: 20px 35px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  /* width: 500px; */
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 110px;
 }
 .setProfile_clsBtn{
   background-color: var(--secondary-color);
@@ -58,7 +47,6 @@
   width: 170px;
   background-color: var(--secondary-color);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  /* background-image: url(); */
   margin: 10px 0;
   position: relative;
   border-radius: 15px;

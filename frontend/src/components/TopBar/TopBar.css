@@ -58,11 +58,13 @@
 }
 .topBar_CenterRegion svg.absolute{
   position: absolute;
-  right: 340px;
+  right: 325px;
 }
 /* Topbar center search */
 .topBar_Center_Search{
-  width: 40%;
+  width: 100%;
+  max-width: calc(100% - 510px);
+  margin-left: 30px;
   background-color: var(--secondary-color);
   height: 50px;
   border-radius: 30px;

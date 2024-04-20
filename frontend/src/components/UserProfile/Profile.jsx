@@ -83,10 +83,13 @@ const Profile = ({user}) => {
       <div className="profile_top">
         <div className="profile_cover"></div>
         <div className="profile_data">
+          <div className='profile_infoDetail'>
           <div className="profile_pic" style={{backgroundImage: `url(${user.profilePic})`}}></div>
           <div className="profile_info">
             <h3>{user.name}</h3>
             <p>Yo! Abdul Rehman's app user.</p>
+          </div>
+
           </div>
           <div className="profile_btns">
             <div className='user_profile-btns'>

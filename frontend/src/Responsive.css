@@ -1,0 +1,13 @@
+@media screen and (max-width: 1250px) {
+  .posts_main{
+     max-width: calc(100% - 600px);
+  }
+}
+@media screen and (max-width: 1100px) {
+  .posts_main{
+     /* max-width: calc(100% - 600px); */
+  }
+  .leftBar .main-menu{
+    width: 220px;
+  }
+}

@@ -64,7 +64,7 @@ const SentReq = () => {
             <div className="people_right">
               <button type="button">
                 <span>
-                  <i class='bx bxs-user-check'></i>
+                  <i className='bx bxs-user-check'></i>
                 </span>
                 Request Sent
               </button>

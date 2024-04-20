@@ -51,10 +51,10 @@ const LeftBar = () => {
         <ul>
           {navigationItems.map((item, index) => (
             <li key={index} className={isActiveItem(item.path) ? "activeItem" : ""}>
-              <a onClick={() => navigateToPath(item.path)}>
+              <button onClick={() => navigateToPath(item.path)}>
                 {item.icon}
                 <span className="nav-text">{item.text}</span>
-              </a>
+              </button>
             </li>
           ))}
         </ul>
@@ -63,10 +63,10 @@ const LeftBar = () => {
         </div>
         <ul className="logout">
           <li>
-            <a href="/" onClick={logout}>
+            <button onClick={logout}>
               <LogOut className="fa" />
               <span className="nav-text">Logout</span>
-            </a>
+            </button>
           </li>
         </ul>
       </nav>

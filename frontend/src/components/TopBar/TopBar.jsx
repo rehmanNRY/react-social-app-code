@@ -201,28 +201,12 @@ const TopBar = () => {
           </defs>
         </svg>
         <div className="topBar_Center_Btns">
-          <button type="button">
+          <button type="button" onClick={()=>{navigateToPath(`Bookmarks`)}}>
             <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#ffffff"
-                strokeWidth="1.7"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-smile"
-              >
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                <line x1="15" y1="9" x2="15.01" y2="9"></line>
-              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-bookmark"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
             </span>
           </button>
-          <button type="button">
+          <button type="button" onClick={()=>{navigateToPath(`Contact`)}}>
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -241,7 +225,7 @@ const TopBar = () => {
               </svg>
             </span>
           </button>
-          <button type="button">
+          <button type="button" onClick={()=>{navigateToPath(`Settings`)}}>
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -260,22 +244,24 @@ const TopBar = () => {
               </svg>
             </span>
           </button>
-          <button type="button">
+          <button type="button" onClick={()=>{navigateToPath(`Friends-Suggestions`)}}>
             <span>
-              <svg
+            <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="21"
-                height="21"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="#ffffff"
                 strokeWidth="1.7"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="feather feather-bell"
+                className="feather feather-smile"
               >
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                <line x1="15" y1="9" x2="15.01" y2="9"></line>
               </svg>
             </span>
           </button>

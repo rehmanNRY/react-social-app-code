@@ -1,29 +1,27 @@
 .contact_main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  padding-left: 70px;
-  background-image: url(https://cdn.fexpink.com/smmlive/images/section-type-second.webp);
-  background-repeat: no-repeat;
-  background-position: bottom right;
-  animation: bgAni 6s infinite;
+  background-color: var(--secondary-color);
+  max-width: calc(100vw - 290px);
+  min-height: calc(100vh - 100px);
+  margin-left: 280px;
+  padding-top: 100px;
+  text-align: center;
 }
-@keyframes bgAni{
-  0% {
-    background-position: bottom right;
-  }
-  50% {
-      background-position: top right;
-  }
-  100% {
-      background-position: bottom right;
-  }
+.contact_main h2{
+  font-size: 42px;
+  padding-top: 60px;
+  font-weight: 500;
+}
+.contact_main p{
+  padding: 0 130px;
+  padding-top: 15px;
+}
+.contact_links{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .contact_data{
-  padding-bottom: 40px;
+  margin-top: 40px;
 }
 .contact_item {
   margin: 25px 0;
@@ -81,7 +79,6 @@
   color: #0d0c22;
   font-weight: 600;
   font-size: 20px;
-  border-bottom: 3px solid var(--text-secondary-color);
 }
 .contact_item span:hover{
   border-bottom: 5px solid var(--text-secondary-color);

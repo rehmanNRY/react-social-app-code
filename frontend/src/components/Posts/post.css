@@ -59,14 +59,11 @@
    padding: 2px 13px;
    font-size: 13px;
    color: white;
-   background-color: #2A86FF;
+   background-color: var(--text-secondary-color);
    border-radius: 30px;
    margin-left: 5px;
    margin-right: 0;
 }
-/* .post .post_bottom button:not(:first-child) span:nth-child(2){
-   background-color: #36383f;
-} */
 /* Post menu */
 .post_menu{
    padding: 1px 0;
@@ -75,7 +72,7 @@
    margin-left: -97px;
    margin-top: 50px;
    background-color: var(--secondary-color);
-   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
    overflow: hidden;
 }
 .post_menu button{
@@ -84,9 +81,11 @@
    font-size: 15px;
    outline: none;
    cursor: pointer;
-   width: 130px;
+   width: 120px;
    background-color: transparent;
    border: none;
+   text-align: left;
+   padding-left: 23px;
 }
 .post_menu button span{
    margin-right: 10px;
@@ -95,7 +94,7 @@
    background-color: var(--primary-color);
 }
 .post_bottom button.btn_liked{
-   color: #2A86FF;
+   color: var(--text-secondary-color);
 }
 /* Post likers */
 .post_likers{
@@ -147,8 +146,8 @@
    margin: 12px 0;
 }
 .post form div{
-   height: 39px;
-   width: 39px;
+   height: 40px;
+   width: 40px;
    border-radius: 50%;
    background-color: var(--secondary-color);
    background-image: url(https://spellquiz.com/upload/file?d=user-avatars/avatar-14.png);
@@ -159,7 +158,7 @@
 }
 .post form input{
    height: 39px;
-   width: 37vw;
+   width: calc(100% - 95px);
    background-color: var(--secondary-color);
    border-radius: 35px;
    padding: 2px 20px;
@@ -174,7 +173,7 @@
    cursor: pointer;
 }
 .post form button i{
-   color: #2A86FF;
+   color: var(--text-secondary-color);
    font-size: 25px;
    line-height: 39px;
 }
@@ -250,7 +249,7 @@
 }
 /* comments bootom */
 .comments .comments_bottom button{
-   color: #2A86FF;
+   color: var(--text-secondary-color);
 }
 .comments .comments_bottom button:hover{
    text-decoration: underline;

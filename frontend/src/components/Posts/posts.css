@@ -13,11 +13,12 @@
 }
 .posts_main{
    background-color: var(--secondary-color);
-   border-top-left-radius: 40px;
-   border-top-right-radius: 40px;
+   border-top-left-radius: 20px;
+   border-top-right-radius: 20px;
    margin: 0 auto;
-   padding: 20px 44px;
+   padding: 20px 30px;
    margin-top: 80px;
+   width: 650px;
 }
 /* New post */
 .posts-new_post,.post{
@@ -48,7 +49,7 @@
    height: 43px;
    border-radius: 35px;
    padding: 1px 21px;
-   width: 37.2vw;
+   width: calc(100% - 95px);
    border: none;
    outline: none;
    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
