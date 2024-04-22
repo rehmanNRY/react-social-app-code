@@ -26,6 +26,7 @@
 /* Post bottom */
 .post .post_bottom,.comments .comments_bottom{
    display: flex;
+   flex-wrap: wrap;
    margin-top: 13px;
    justify-content: space-around;
    border-top: 1px solid #dddddd;
@@ -37,7 +38,6 @@
    padding: 9px 23px;
    border-radius: 27px;
    font-size: 14px;
-   /* color: #f2f2f2; */
    border: none;
    outline: none;
    background-color: var(--secondary-color);
@@ -48,7 +48,6 @@
    transition: all .2s;
 }
 .post .post_bottom button:hover{
-   /* background-color: rgb(63, 66, 80); */
    background-color: #f1f7ff;
 }
 .post .post_bottom button span{

@@ -1,9 +1,9 @@
 .contact_main {
   background-color: var(--secondary-color);
-  max-width: calc(100vw - 290px);
   min-height: calc(100vh - 100px);
-  margin-left: 280px;
   padding-top: 100px;
+  margin: 0 10px;
+  width: 100%;
   text-align: center;
 }
 .contact_main h2{
@@ -31,6 +31,7 @@
   color: black;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 .contact_item .contact_left {
   height: 42px;

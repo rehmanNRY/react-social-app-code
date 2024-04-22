@@ -1,13 +1,629 @@
-@media screen and (max-width: 1250px) {
-  .posts_main{
-     max-width: calc(100% - 600px);
+/* For 1052 px */
+@media screen and (max-width: 1152px) {
+  /* Topbar Left */
+  .topBar_LeftRegion{
+    width: 260px;
+    min-width: 260px;
   }
-}
-@media screen and (max-width: 1100px) {
-  .posts_main{
-     /* max-width: calc(100% - 600px); */
+  /* Topbar right */
+  .topBar_RightRegion{
+    min-width: 260px;
+    width: 260px;
+  }
+  .topBar_RightRegion button{
+    height: 48px;
+    width: 48px;
+  }
+  .topBar_CenterRegion svg.absolute{
+    right: 280px;
+  }
+  /* Leftbar */
+  .leftBar{
+    min-width: 260px;
   }
   .leftBar .main-menu{
-    width: 220px;
+    width: 260px;
+  }
+  /* Rightbar */
+  .rightbar_warpper{
+    min-width: 260px;
+  }
+  .rightBar {
+    width: 260px;
+  }
+  /* Posts */
+  .posts_main{
+    padding: 15px 20px;
+  }
+  /* Post */
+  .post .post_bottom button,.comments .comments_bottom button{
+    padding: 9px 15px;
+  }
+  /* User profile */
+  .profile_pic{
+    margin-left: 20px;
+  }
+ .profile_top .user_profile-btns{
+    margin-right: 10px;
+  }
+  .profile_menu ul{
+    display: flex;
+    padding-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+  .profile_menu ul li{
+    padding: 11px 13px;
+  }
+  /* Update profile */
+  .setProfile_main{
+    width: 85%;
+    margin-bottom: 70px;
+  }
+  /* People */
+  .people-section{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px 15px;
+  }
+  .people_person{
+    padding: 12px 10px;
+  }
+  .people_right button{
+    background-color: var(--text-secondary-color);
+    border-radius: 9px;
+    padding: 10px 15px;
+    padding-left: 40px;
+  }
+  /* Settings */
+  .settings_data{
+    width: 95%;
+    margin: 0 auto;
+    padding: 0px 15px;
+  }
+}
+
+/* For 1024 px */
+@media screen and (max-width: 1024px) {
+  /* Topbar Left */
+  .topBar_LeftRegion{
+    width: 240px;
+    min-width: 240px;
+  }
+  /* Topbar right */
+  .topBar_RightRegion{
+    min-width: 240px;
+    width: 240px;
+  }
+  .topBar_RightRegion button{
+    height: 46px;
+    width: 46px;
+  }
+  .topBar_CenterRegion svg.absolute{
+    right: 255px;
+  }
+  /* Leftbar */
+  .leftBar{
+    min-width: 240px;
+  }
+  .leftBar .main-menu{
+    width: 240px;
+  }
+  /* Rightbar */
+  .rightbar_warpper{
+    min-width: 240px;
+  }
+  .rightBar {
+    width: 240px;
+  }
+  /* Posts */
+  .posts_main{
+    padding: 15px 15px;
+ }
+  /* User profile */
+  .profile_pic{
+    height: 170px;
+    width: 175px;
+    margin-top: -80px;
+    margin-left: 10px;
+  }
+  .profile_info{
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  .profile_top .user_profile-btns{
+    margin-right: 5px;
+    margin-top: 15px;
+  }
+  .profile_top .user_profile-btns button{
+    padding: 11px 16px;
+    padding-left: 42px;
+    margin: 4px;
+    float: right;
+  }
+  .profile_menu ul li{
+    padding: 11px 16px;
+  }
+  .UserProfile .posts_main {
+    padding: 10px 0;
+    margin-right: 10px;
+  }
+  .UserProfile_main .rightBar {
+    margin-top: 25px;
+  }
+  /* People */
+  .people_person{
+    padding: 5px 15px;
+  }
+  .people_right button{
+    display: block;
+    width: 100%;
+  }
+  /* Settings */
+  .settings_main a{
+    padding: 30px;
+    border-radius: 20px;
+  }
+}
+
+/* For 900px */
+@media screen and (max-width: 900px) {
+  /* Rightbar */
+  .rightbar_warpper{
+    min-width: 70px;
+  }
+  .rightBar {
+    padding-top: 10px;
+    border-top-left-radius: 7px;
+    width: 70px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  .rightBar_user{
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
+  }
+  .rightBar_user-top{
+    padding: 0;
+    justify-content: center;
+  }
+  .rightBar_user-top div{
+    margin: 0;
+  }
+  .rightBar h4, .rightBar label{
+    display: none;
+  }
+  .rightBar h4{
+    position: absolute;
+    right: 78px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 9px;
+    white-space: nowrap;
+    font-size: 16px;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    background-color: var(--text-secondary-color);
+    display: none;
+    padding: 0 12px;
+  }
+  .rightBar ul li:hover h4, .rightBar .rightBar_user-top:hover h4{
+    display: block;
+  }
+  /* Recent Contributions */
+  .rightbar_recentCon{
+    display: none;
+  }
+  .rightBar ul li{
+    padding: 0;
+    justify-content: center;
+  }
+  .rightBar ul li:hover{
+      border-left: 0;
+  }
+  .rightBar ul li div{
+      margin: 5px 0;
+  }
+  .UserProfile_main .rightbar_warpper{
+    padding: 0;
+    margin-top: 0;
+    border-radius: 0;
+    background-color: transparent;
+  }
+  /* Posts */
+  .posts_main{
+    padding: 5px 10px;
+ }
+}
+
+/* For 800px */
+@media screen and (max-width: 800px) {
+  .leftBar{
+    position: absolute;
+    transition: none;
+  }
+  .leftbar_minimize .leftBar{
+    position: relative;
+  }
+  /* Posts */
+  .posts_main{
+    padding: 5px 15px;
+  }
+  .UserProfile_main .rightBar{
+    padding: 15px 0;
+  }
+  /* Set profile pic */
+  .setProfile_main .oldPic{
+    height: 170px;
+    width: 170px;
+  }
+  /* Contact */
+  .contact_main p{
+    padding: 0 30px;
+  }
+}
+
+/* For 700px */
+@media screen and (max-width: 700px) {
+  .topBar{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+  .topBar_RightRegion{
+    display: none;
+  }
+  .topBar_CenterRegion svg.absolute{
+    right: 15px;
+  }
+  /* Posts */
+  .posts_main{
+    padding: 5px 15px;
+  }
+  /* User profile */
+  .UserProfile_main{
+    max-width: calc(100% - 70px);
+  }
+  .profile_pic{
+    height: 150px;
+    width: 180px;
+    margin-top: -50px;
+    margin-left: 10px;
+  }
+  .profile_top .user_profile-btns{
+    margin-top: 5px;
+  }
+  .profile_top .user_profile-btns button{
+    width: 77%;
+    float: right;
+    padding: 11px 0;
+    padding-left: 30px;
+}
+  /* Settings */
+  .settings_data{
+    width: 97%;
+    margin: 0 auto;
+    padding: 0px 10px;
+  }
+}
+
+/* For 600px */
+@media screen and (max-width: 600px) {
+  .topBar_CenterRegion {
+    padding: 0 7px;
+  }
+  .topBar_CenterRegion svg.absolute{
+    right: 2px;
+  }
+  .topBar_Center_Search form button {
+    width: 50px;
+  }
+  .topBar_Center_Search form input {
+    width: 90%;
+    padding-left: 45px;
+  }
+  /* Leftbar */
+  .leftBar{
+    display: block;
+    min-width: 100%;
+    transition: all 2s;
+  }
+  .leftBar .main-menu{
+    min-height: 100%;
+    min-width: 100%;
+    top: 69px;
+  }
+  .leftbar_minimize .leftBar{
+    display: none;
+  }
+  /* Rightbar */
+  .rightBar, .rightbar_warpper{
+    display: none;
+  }
+  /* Posts */
+  .posts_main{
+    padding: 5px 15px;
+    border-radius: 0;
+    margin: 70px 0 0 0;
+  }
+  /* User profile */
+  .UserProfile_main {
+    max-width: 100%;
+    margin: 70px 0 0 0;
+  }
+  .profile_info{
+    margin-left: 10px;
+  }
+  .UserProfile .posts_main {
+    padding: 10px 0;
+    margin-right: 0;
+  }
+  /* Profile pic */
+  .setProfilePic {
+    margin: 0;
+    border-radius: 0;
+  }
+  .setProfile_main {
+    padding: 20px 10px;
+    width: 90%;
+  }
+  .setProfile_form form {
+    padding: 0;
+  }
+  .setProfile_form form button {
+    background-color: var(--text-secondary-color);
+    color: white;
+    border-radius: 8px;
+    padding: 10px 11px;
+  }
+  .setProfile_form form button svg{
+    display: none;
+  }
+  /* People */
+  .people-section {
+    border-radius: 0;
+    margin: 0;
+    margin-top: 70px;
+    width: 100%;
+  }
+  /* Settings */
+  .settings_data a {
+    height: fit-content;
+  }
+  .settings_data a img {
+    top: 40%;
+  }
+  /* Contact */
+  .contact_main{
+    margin: 0;
+  }
+  .contact_main h2 {
+    font-size: 42px;
+    padding-top: 30px;
+    font-weight: 500;
+  }
+  .contact_main p {
+    padding: 0 15px;
+  }
+  .contact_item .contact_left {
+    margin-right: 10px;
+  }
+  .contact_item span {
+    font-size: 18px;
+  }
+}
+
+/* For 500px */
+@media screen and (max-width: 500px) {
+  /* Topbar */
+  .topBar_LeftRegion {
+    min-width: 225px;
+  }
+  .topBar_LeftRegion span.topBarmenu_icon {
+    margin-right: 10px;
+    margin-left: 5px;
+  }
+  .topBar_CenterRegion svg.absolute{
+    display: none;
+  }
+  /* Posts */
+  .posts_main {
+    padding: 5px;
+  }
+  .post .post_bottom button, .comments .comments_bottom button {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+  .post .post_bottom button span {
+    margin-right: 4px;
+    font-size: 16px;
+  }
+  .post .post_bottom button span:nth-child(2) {
+    padding: 2px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+    margin-left: 4px;
+    margin-right: 0;
+  }
+  /* Profile */
+  .profile_infoDetail {
+    flex-direction: column;
+  }
+  .profile_pic {
+    height: 190px;
+    width: 185px;
+    margin-top: -80px;
+    margin-left: 15px;
+  }
+  .profile_info {
+    margin-left: 15px;
+  }
+  /* Contact */
+  .contact_main h2 {
+    font-size: 40px;
+    padding-top: 15px;
+    line-height: 45px;
+  }
+  .contact_main p {
+    padding: 0 5px;
+    padding-top: 5px;
+  }
+  .contact_data{
+    margin-top: 15px;
+  }
+  .contact_item {
+    margin: 15px 0;
+  }
+  .contact_item .contact_left {
+    height: 38px;
+    width: 38px;
+    margin-right: 10px;
+  }
+  .contact_item span {
+    font-size: 16px;
+  }
+}
+
+/* For 400px */
+@media screen and (max-width: 400px) {
+  .contact_item .contact_left {
+    height: 35px;
+    width: 35px;
+    margin-right: 10px;
+  }
+  .contact_item span {
+    font-size: 14px;
+  }
+}
+
+/* For 450px */
+@media screen and (max-width: 450px) {
+  /* Topbar */
+  .topBar_LeftRegion {
+    min-width: max-content;
+  }
+  .topBar_LeftRegion span.topBarmenu_icon {
+    margin-right: 15px;
+    margin-left: 10px;
+  }
+  .topBar_Center_Search {
+    width: 100%;
+    background-color: transparent;
+    height: fit-content;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .topBar_Center_Search form{
+    justify-content: end;
+  }
+  .topBar_Center_Search form button {
+    outline: none;
+    border: none;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background-color: var(--text-secondary-color);
+    border-radius: 50%;
+    margin-left: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    float: right;
+  }
+  .topBar_Center_Search form button svg {
+    height: 24px;
+    width: 24px;
+    fill: var(--primary-color);
+    stroke: var(--primary-color);
+  }
+  .topBar_Center_Search form input {
+    display: none;
+  }
+  /* Topbar right */
+  .topBar_RightRegion{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    background-color: var(--text-secondary-color);
+    bottom: 0;
+    height: 60px;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  .topBar_RightRegion button{
+    border-radius: 0;
+    height: 100%;
+    width: -webkit-fill-available;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+  }
+  .topBar_RightRegion button:hover{
+    background-color: var(--primary-color);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+  .topBar_RightRegion button svg{
+    height: 23px;
+    width: 23px;
+    display: block;
+  }
+  .topBar_RightRegion button:hover svg{
+    stroke: var(--text-secondary-color);
+  }
+  /* Post */
+  .posts-new_post, .post {
+    padding: 17px 10px;
+    border-radius: 8px;
+    margin: 8px 0;
+  }
+  .posts-new_post-bottom ul li{
+    width: 32px;
+  }
+  .posts-new_post-bottom div button {
+    padding: 10px 22px;
+    margin-left: 5px;
+    border-radius: 25px;
+  }
+  .post .post_bottom button, .comments .comments_bottom button {
+    padding: 7px 9px;
+    font-size: 12px;
+    border-radius: 18px;
+  }
+  /* Update profile */
+  .setProfile_main {
+    margin-bottom: 50px;
+  }
+  .setprofileTop{
+    flex-direction: column;
+    justify-content: center;
+  }
+  .setProfile_text {
+    margin-left: 0;
+  }
+  .setProfile_form form{
+    flex-direction: column;
+    box-shadow: none;
+    background-color: transparent;
+  }
+  .setProfile_form form input {
+    padding: 15px 5px;
+    padding-left: 10px;
+    font-size: 15px;
+    min-width: auto;
+    border-left: 4px solid var(--text-secondary-color);
+    margin-bottom: 15px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background-color: var(--secondary-color);
+  }
+  .setProfile_form form button svg {
+    display: inline;
+  }
+  /* Settings */
+  .settings_data a img {
+    top: 53%;
+    width: 30%;
   }
 }

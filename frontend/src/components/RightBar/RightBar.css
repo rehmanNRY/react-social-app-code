@@ -1,13 +1,17 @@
-.rightBar{
-   height: 100vh;
-   width: 280px;
-   position: fixed;
-   padding: 0 5px;
-   right: 0;
-   top: 80px;
-   max-height: calc(100vh - 80px);
-   background-color: var(--primary-color);
+.rightbar_warpper{
+   min-width: 280px;
 }
+.rightBar {
+   background-color: var(--primary-color);
+   position: fixed;
+   top: 80px;
+   bottom: 0;
+   right: 0;
+   z-index: 999;
+   width: 280px;
+   height: 100%;
+   max-height: calc(100% - 85px);
+ }
 /* Right bar user */
 .rightBar_user{
    cursor: pointer;
@@ -122,7 +126,7 @@
    width: 44px;
    background-color: var(--secondary-color);
    border-radius: 20%;
-   margin-right: 9px;
+   margin-right: 12px;
    background-position: center;
    background-size: cover;
 }
@@ -130,6 +134,5 @@
    line-height: 43px;
    font-weight: 400;
    font-size: 16px;
-   padding-left: 3px;
    font-family: "Titillium Web", sans-serif;
 }

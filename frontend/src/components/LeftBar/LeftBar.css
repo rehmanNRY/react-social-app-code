@@ -1,3 +1,7 @@
+.leftBar{
+  transition: all .2s ease;
+  min-width: 280px;
+}
 .main-menu {
   background-color: var(--primary-color);
   position: fixed;
@@ -10,7 +14,7 @@
   max-height: calc(100% - 85px);
 }
 .main-menu li {
-  padding: 0 5px;
+  padding-left: 5px;
   z-index: 99;
   position: relative;
 }
@@ -38,23 +42,52 @@
   color: var(--text-secondary-color);
   border-left: 3px solid var(--text-secondary-color);
 }
-.fa {
+.main-menu li button img{
+  height: 30px;
   padding-left: 15px;
   padding-right: 20px;
-  height: 26px;
-  stroke-width: 1.7;
+}
+.main-menu ul:nth-child(1) li:last-child button img{
+  transform: rotate(45deg);
 }
 .main-menu .nav-text {
   font-family: "Titillium Web", sans-serif;
 }
-.main-menu > ul.logout {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+
+
+/* .leftbar_minimize */
+.leftbar_minimize .leftBar{
+  min-width: 70px;
 }
-.leftBar_svg{
-  z-index: 9;
+.leftbar_minimize .leftBar .main-menu{
+  width: 70px;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+.leftbar_minimize .main-menu li {
+  padding-left: 0;
+}
+.leftbar_minimize .main-menu li button {
+  margin: 4px 0;
+}
+.leftbar_minimize .main-menu li button img{
+  height: 33px;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0 auto;
+}
+.leftbar_minimize .leftBar .main-menu .nav-text {
   position: absolute;
-  bottom: 7px;
+  left: 78px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 11px 20px;
+  border-radius: 9px;
+  white-space: nowrap;
+  font-size: 16px;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color: var(--text-secondary-color);
+  display: none;
+}
+.leftbar_minimize .leftBar ul li:hover .nav-text{
+  display: block;
 }

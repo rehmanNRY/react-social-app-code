@@ -80,40 +80,42 @@ const SetProfilePic = () => {
   return (
     <>
       <TopBar />
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
       <LeftBar />
-      <div className="setProfilePic">
-        <div className="setProfile_main">
-          <button
-            type="button"
-            onClick={navigatetoHome}
-            className="setProfile_clsBtn"
-          >
-            <X />
-          </button>
-          <div className="setprofileTop">
-            <div className="oldPic">
-              <div style={{ backgroundImage: `url(${pictureLink})` }}></div>
+        <div className="setProfilePic">
+          <div className="setProfile_main">
+            <button
+              type="button"
+              onClick={navigatetoHome}
+              className="setProfile_clsBtn"
+            >
+              <X />
+            </button>
+            <div className="setprofileTop">
+              <div className="oldPic">
+                <div style={{ backgroundImage: `url(${pictureLink})` }}></div>
+              </div>
+              <div className="setProfile_text">
+                <h3>Update Profile Pic</h3>
+                <h4>Hey, {userData.name}</h4>
+              </div>
             </div>
-            <div className="setProfile_text">
-              <h3>Update Profile Pic</h3>
-              <h4>Hey, {userData.name}</h4>
+            <div className="setProfile_form">
+              <form action="" onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  value={pictureLink}
+                  onChange={handleInputChange}
+                  required
+                  autoComplete="off"
+                  placeholder="Enter Picture link"
+                />
+                <button type="submit">
+                  <PlusSquare />
+                  Update Dp
+                </button>
+              </form>
             </div>
-          </div>
-          <div className="setProfile_form">
-            <form action="" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                value={pictureLink}
-                onChange={handleInputChange}
-                required
-                autoComplete="off"
-                placeholder="Enter Picture link"
-              />
-              <button type="submit">
-                <PlusSquare />
-                Update Dp
-              </button>
-            </form>
           </div>
         </div>
       </div>

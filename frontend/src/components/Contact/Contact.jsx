@@ -17,6 +17,7 @@ const Contact = () => {
   return (
     <>
     <TopBar />
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
       <LeftBar />
       <div className="contact_main">
         <h2>Contact, Abdul Rehman</h2>
@@ -46,6 +47,7 @@ const Contact = () => {
           </div>
         </div>
         </div>
+      </div>
       </div>
     </>
   );

@@ -16,6 +16,7 @@ const Settings = () => {
   return (
     <>
     <TopBar />
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
       <LeftBar />
       <div className="settings_main">
         <div className="settings_data">
@@ -38,6 +39,7 @@ const Settings = () => {
             <img src="https://toastlog.com/img/logos/logo.svg" alt="" />
           </Link>
         </div>
+      </div>
       </div>
     </>
   );

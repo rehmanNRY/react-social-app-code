@@ -1,12 +1,13 @@
 .setProfilePic{
   background-color: var(--secondary-color);
-  max-width: calc(100vw - 290px);
   min-height: calc(100vh - 100px);
-  margin-left: 280px;
   padding-top: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 10px;
+  width: 100%;
+  border-radius: 8px;
 }
 .setProfile_main{
   background-color: var(--primary-color);

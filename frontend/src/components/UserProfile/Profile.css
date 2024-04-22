@@ -2,9 +2,8 @@
   width: 100%;
   min-height: 100vh;
   background-color: var(--secondary-color);
-  max-width: calc(100% - 280px);
+  margin: 0 10px;
   margin-top: 80px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 /* Profile */
 .UserProfile{
@@ -24,7 +23,6 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .profile_data{
-  /* background-color: aqua; */
   display: flex;
   justify-content: space-between;
 }
@@ -33,7 +31,6 @@
 }
 .profile_pic{
   background-color: var(--secondary-color);
-  background-image: url(https://img.freepik.com/premium-photo/young-boy-hearing-music-computer-3d-character-illustration_839035-103323.jpg);
   background-position: center;
   background-size: cover;
   border-radius: 14px;
@@ -87,10 +84,11 @@
 }
 /* Profile menu */
 .profile_menu{
-  margin-top: 27px;
+  margin-top: 22px;
 }
 .profile_menu ul{
   display: flex;
+  flex-wrap: wrap;
   padding-left: 20px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
@@ -100,6 +98,8 @@
   transition: all .1s;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  margin-top: 7px;
+  border-bottom: 3px solid transparent;
 }
 .profile_menu ul li:hover{
   background-color: var(--secondary-color);
@@ -138,7 +138,6 @@
 /* Userprofile posts */
 .UserProfile .posts_main{
   width: 100%;
-  max-width: calc(100% - 370px);
   margin: 0;
   padding: 20px;
 }
@@ -146,10 +145,13 @@
   max-width: 750px;
 }
 /* Right bar */
+.UserProfile_main .rightbar_warpper{
+  padding: 15px;
+  background-color: var(--primary-color);
+  margin-top: 35px;
+  border-radius: 13px;
+}
 .UserProfile_main .rightBar{
   position: static;
-  margin-top: 35px;
   margin-right: 10px;
-  padding: 15px;
-  border-radius: 13px;
 }

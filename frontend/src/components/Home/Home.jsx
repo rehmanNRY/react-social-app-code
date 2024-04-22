@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <>
     <TopBar />
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <div className="unable_flex" style={{ display: "flex", justifyContent: "space-between" }}>
       <LeftBar />
       <Posts postUserCheck={false} heading={false}/>
       <RightBar />

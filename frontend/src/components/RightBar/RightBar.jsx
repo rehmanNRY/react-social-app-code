@@ -47,45 +47,47 @@ const RightBar = () => {
    }, [newPath])
 
    return (
-      <div className='rightBar'>
-         <div className="rightBar_user" onClick={()=>{navigateToPath(`Profile/${userData._id}`)}}>
-            <div className="rightBar_user-top">
-               <div style={{backgroundImage: `url(${userData.profilePic})`}}></div>
-               <h4>{userData.name}</h4>
+      <div className='rightbar_warpper'>
+         <div className='rightBar'>
+            <div className="rightBar_user" onClick={()=>{navigateToPath(`Profile/${userData._id}`)}}>
+               <div className="rightBar_user-top">
+                  <div style={{backgroundImage: `url(${userData.profilePic})`}}></div>
+                  <h4>{userData.name}</h4>
+               </div>
+               {/* <div className="rightBar_user-buttom">
+                  <div><h5>101k</h5><span>Reacts</span></div>
+                  <div><h5>50k</h5><span>Following</span></div>
+                  <div><h5>364</h5><span>Posts</span></div>
+               </div> */}
             </div>
-            {/* <div className="rightBar_user-buttom">
-               <div><h5>101k</h5><span>Reacts</span></div>
-               <div><h5>50k</h5><span>Following</span></div>
-               <div><h5>364</h5><span>Posts</span></div>
-            </div> */}
+            <label>Recent Contributions</label>
+            <div className="rightbar_recentCon">
+               {users.slice(0, 6).map((user)=> <div style={{backgroundImage: `url(${user.profilePic})`}} key={user._id}></div>)}
+               <div>{users.length}+</div>
+            </div>
+            <label>Other Users</label>
+            <ul>
+               {users.map((user)=>{
+                  return (
+                     <li key={user._id} onClick={()=>{navigateToPath(`Profile/${user._id}`)}}>
+                        <div style={{backgroundImage: `url(${user.profilePic})`}}></div>
+                        <h4>{user.name}</h4>
+                     </li>
+                  ) 
+               })}
+            </ul>
+            <label>Similar Users</label>
+            <ul>
+               {users.map((user)=>{
+                  return (
+                     <li key={user._id} onClick={()=>{navigateToPath(`Profile/${user._id}`)}}>
+                        <div style={{backgroundImage: `url(${user.profilePic})`}}></div>
+                        <h4>{user.name}</h4>
+                     </li>
+                  ) 
+               })}
+            </ul>
          </div>
-         <label>Recent Contributions</label>
-         <div className="rightbar_recentCon">
-            {users.slice(0, 6).map((user)=> <div style={{backgroundImage: `url(${user.profilePic})`}} key={user._id}></div>)}
-            <div>{users.length}+</div>
-         </div>
-         <label>Other Users</label>
-         <ul>
-            {users.map((user)=>{
-               return (
-                  <li key={user._id} onClick={()=>{navigateToPath(`Profile/${user._id}`)}}>
-                     <div style={{backgroundImage: `url(${user.profilePic})`}}></div>
-                     <h4>{user.name}</h4>
-                  </li>
-               ) 
-            })}
-         </ul>
-         <label>Similar Users</label>
-         <ul>
-            {users.map((user)=>{
-               return (
-                  <li key={user._id} onClick={()=>{navigateToPath(`Profile/${user._id}`)}}>
-                     <div style={{backgroundImage: `url(${user.profilePic})`}}></div>
-                     <h4>{user.name}</h4>
-                  </li>
-               ) 
-            })}
-         </ul>
       </div>
    )
 }

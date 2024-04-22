@@ -2,10 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import "./TopBar.css";
 import { Link, useNavigate } from "react-router-dom";
 import getUserDetail from "../containers/functions/user/userDetailApi";
+import getAllUsersApi from "../containers/functions/user/getAllUsersApi";
 
 const TopBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userData, setUserData] = useState({});
+  const [users, setUsers] = useState([])
 
   const buttonRef = useRef(null);
 
@@ -18,7 +20,31 @@ const TopBar = () => {
     setNewPath(`/${path}`);
   };
 
+
+  function addClassToBody(className) {
+    document.body.classList.add(className);
+  }
+  function removeClassFromBody(className) {
+    document.body.classList.remove(className);
+  }
+  function toggleClassOnBody(className) {
+    if (document.body.classList.contains(className)) {
+      removeClassFromBody(className);
+    } else {
+      addClassToBody(className);
+    }
+  }
+
   useEffect(() => {
+    const maxWidth = 900;
+    const className = 'leftbar_minimize';
+    if (window.innerWidth <= maxWidth) {
+      addClassToBody(className);
+    } else {
+      removeClassFromBody(className);
+    }
+
+
     // Getting user detail
     const userDetail = async () => {
       const user = await getUserDetail();
@@ -26,6 +52,13 @@ const TopBar = () => {
       // setUserId(user._id);
     };
     userDetail();
+
+    // Getting alluser
+    const getAllusers = async () => {
+      const allUsers = await getAllUsersApi();
+      setUsers(allUsers);
+    }
+    getAllusers();
 
     // Navigating
     if (newPath !== '') {
@@ -49,10 +82,11 @@ const TopBar = () => {
   const toggleSearchMenu = () => {
     setIsOpen(true);
   };
+
   return (
     <div className="topBar">
       <div className="topBar_LeftRegion">
-        <span>
+        <span className="topBarmenu_icon" onClick={()=> toggleClassOnBody('leftbar_minimize')}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -70,13 +104,13 @@ const TopBar = () => {
             <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
         </span>
-      </div>
-      <div className="topBar_CenterRegion">
-        <label className="topBar_Center_Logo" htmlFor="">
+        <label className="topBar_Logo" htmlFor="">
           <Link to="/">
             Abdul.<span>REHMAN</span>
           </Link>
         </label>
+      </div>
+      <div className="topBar_CenterRegion">
         <div className="topBar_Center_Search">
           <form action="" ref={buttonRef} onClick={toggleSearchMenu}>
             <div>
@@ -100,24 +134,24 @@ const TopBar = () => {
           <div className={`topbar_searchMenu ${isOpen ? "displayMenu" : ""}`}>
             <div className="topbar_searchMenu-main">
               <h3>People</h3>
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="topbar_searchMenu-item">
-                  <div className="searchmenu-itemPic"></div>
-                  <h4>Abdul Rehman</h4>
+              {users.slice(0,3).map((user) => (
+                <div key={user._id} className="topbar_searchMenu-item">
+                  <div className="searchmenu-itemPic" style={{backgroundImage: `url(${user.profilePic})`}}></div>
+                  <h4>{user.name}</h4>
                 </div>
               ))}
-              <h3>Groups</h3>
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="topbar_searchMenu-item">
-                  <div className="searchmenu-itemPic"></div>
-                  <h4>Fun Land</h4>
+              <h3>Friends</h3>
+              {users.slice(0,3).map((user) => (
+                <div key={user._id} className="topbar_searchMenu-item">
+                  <div className="searchmenu-itemPic" style={{backgroundImage: `url(${user.profilePic})`}}></div>
+                  <h4>{user.name}</h4>
                 </div>
               ))}
               <h3>Pages</h3>
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="topbar_searchMenu-item">
-                  <div className="searchmenu-itemPic"></div>
-                  <h4>Poetry lovers</h4>
+              {users.slice(0,3).map((user) => (
+                <div key={user._id} className="topbar_searchMenu-item">
+                  <div className="searchmenu-itemPic" style={{backgroundImage: `url(${user.profilePic})`}}></div>
+                  <h4>{user.name}</h4>
                 </div>
               ))}
             </div>
@@ -200,93 +234,92 @@ const TopBar = () => {
             </linearGradient>
           </defs>
         </svg>
-        <div className="topBar_Center_Btns">
-          <button type="button" onClick={()=>{navigateToPath(`Bookmarks`)}}>
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-bookmark"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-            </span>
-          </button>
-          <button type="button" onClick={()=>{navigateToPath(`Contact`)}}>
-            <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#ffffff"
-                strokeWidth="1.7"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-mail"
-              >
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-            </span>
-          </button>
-          <button type="button" onClick={()=>{navigateToPath(`Settings`)}}>
-            <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#ffffff"
-                strokeWidth="1.7"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-settings"
-              >
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-              </svg>
-            </span>
-          </button>
-          <button type="button" onClick={()=>{navigateToPath(`Friends-Suggestions`)}}>
-            <span>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#ffffff"
-                strokeWidth="1.7"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-smile"
-              >
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                <line x1="15" y1="9" x2="15.01" y2="9"></line>
-              </svg>
-            </span>
-          </button>
-          <button type="button" onClick={()=>{navigateToPath(`Profile/${userData._id}`)}} >
-            <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#fff"
-                strokeWidth="1.7"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-user"
-              >
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-            </span>
-          </button>
-        </div>
       </div>
-      <div className="topBar_RightRegion"></div>
+      <div className="topBar_RightRegion">
+        <button type="button" onClick={()=>{navigateToPath(`Bookmarks`)}}>
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-bookmark"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+          </span>
+        </button>
+        <button type="button" onClick={()=>{navigateToPath(`Contact`)}}>
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="feather feather-mail"
+            >
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </span>
+        </button>
+        <button type="button" onClick={()=>{navigateToPath(`Settings`)}}>
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="feather feather-settings"
+            >
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </span>
+        </button>
+        <button type="button" onClick={()=>{navigateToPath(`Friends-Suggestions`)}}>
+          <span>
+          <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="feather feather-smile"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+              <line x1="9" y1="9" x2="9.01" y2="9"></line>
+              <line x1="15" y1="9" x2="15.01" y2="9"></line>
+            </svg>
+          </span>
+        </button>
+        <button type="button" onClick={()=>{navigateToPath(`Profile/${userData._id}`)}} >
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="feather feather-user"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </span>
+        </button>
+      </div>
     </div>
   );
 };
