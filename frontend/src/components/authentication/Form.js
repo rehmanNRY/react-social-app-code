@@ -15,6 +15,8 @@ const Form = () => {
    const [loginFormDisplay, setLoginFormDisplay] = useState("block");
    const [signupStep1Display, setSignupStep1Display] = useState("none");
    const [signupStep2Display, setSignupStep2Display] = useState("none");
+   const [loginClass, setLoginClass] = useState('');
+   const [matchPswrd, setMatchPswrd] = useState('');
    // Go to login form
    const goLoginForm = () => {
       setLoginFormDisplay("block");
@@ -30,6 +32,7 @@ const Form = () => {
    // Login Form
    const [loginForm, setLoginForm] = useState({ loginEmail: "", loginPassword: "" });
    const loginOnChange = (e) => {
+      setLoginClass('');
       setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
    }
    // Login form api call
@@ -53,7 +56,8 @@ const Form = () => {
             console.log(myJson.authToken)
          }
          else {
-            console.log("Some error occur write correct credentials")
+            setLoginClass('invalidCredLogin');
+            // console.log("Some error occur write correct credentials")
          }
       } catch (error) {
          console.log("Some error occured!");
@@ -68,6 +72,7 @@ const Form = () => {
    // Signup Form
    const [signForm, setSignForm] = useState({ signEmail: "", signPassword: "", signCnPassword: "", signFName: "", signLName: "" });
    const signOnChange = (e) => {
+      setMatchPswrd("")
       setSignForm({ ...signForm, [e.target.name]: e.target.value });
    }
    // Signup form api call
@@ -106,7 +111,8 @@ const Form = () => {
          setSignupStep1Display("none");
          setSignupStep2Display("block");
       } else {
-         alert("Password and confrm password is not equal");
+         setMatchPswrd("unequalPass")
+         // alert("Password and confrm password is not equal");
       }
    }
    // Submitting signup step 2 form
@@ -121,13 +127,14 @@ const Form = () => {
    return (
       <div className='authForm'>
          {/* Login form */}
-         <form style={{ display: `${loginFormDisplay}` }} autoComplete='off' className='loginForm' onSubmit={loginSubmit}>
+         <form style={{ display: `${loginFormDisplay}` }} autoComplete='off' className={`loginForm ${loginClass}`} onSubmit={loginSubmit}>
             <h3>Let's Start</h3>
             <p>Doesn't have an account yet? <span onClick={goSignupStep1}>Sign up</span></p>
             <label htmlFor="loginEmail"><h4>Email address</h4></label>
             <input type="email" name="loginEmail" required onChange={loginOnChange} value={loginForm.loginEmail} id="loginEmail" placeholder='your@example.com' />
             <label htmlFor="loginPassword"><h4>Password <span>Forgot Password?</span></h4></label>
             <input type="password" name="loginPassword" onChange={loginOnChange} value={loginForm.loginPassword} id="loginPassword" required minLength={6} placeholder='Enter 6 character or more' />
+            <p className='invlidCredText'>Login using valid credentials</p>
             <button type="submit">Login</button>
             <div className="formBottom">
                <p>or login with</p>
@@ -140,7 +147,7 @@ const Form = () => {
             </div>
          </form>
          {/* Signup Step 1 form */}
-         <form style={{ display: `${signupStep1Display}` }} autoComplete='off' className='signupForm' onSubmit={submitSingupStep1}>
+         <form style={{ display: `${signupStep1Display}` }} autoComplete='off' className={`signupForm ${matchPswrd}`} onSubmit={submitSingupStep1}>
             <div className="signupSteps">
                <div></div>
                <div style={{ backgroundColor: `#cdcdcd` }}></div>
@@ -148,24 +155,18 @@ const Form = () => {
             <h3>Let's Start</h3>
             <p>Already have an account? <span onClick={goLoginForm}>Login now</span></p>
             <div className="signupStep1">
+               <label htmlFor="signFName"><h4>First Name</h4></label>
+               <input type="text" name="signFName" required minLength={3} onChange={signOnChange} value={signForm.signFName} id="signFName" placeholder='Your first name' />
+               <label htmlFor="signLName"><h4>Last Name</h4></label>
+               <input type="text" name="signLName" required minLength={3} onChange={signOnChange} value={signForm.signLName} id="signLName" placeholder='Your last name' />
                <label htmlFor="signEmail"><h4>Email address</h4></label>
                <input type="email" name="signEmail" onChange={signOnChange} value={signForm.signEmail} required id="signEmail" placeholder='your@example.com' />
                <label htmlFor="signPassword"><h4>Password</h4></label>
                <input type="password" name="signPassword" onChange={signOnChange} value={signForm.signPassword} required minLength={6} id="signPassword" placeholder='Enter 6 character or more' />
                <label htmlFor="signCnPassword"><h4>Confirm Password</h4></label>
                <input type="password" name="signCnPassword" onChange={signOnChange} value={signForm.signCnPassword} required minLength={6} id="signCnPassword" placeholder='Confrim your password' />
+               <p className='matchPassword'>Enter same password</p>
                <button type="submit">Next</button>
-               <div className="formBottom">
-                  <p>or signup with</p>
-                  <div className='signupBtns'>
-                     <button type="button">
-                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z"></path></svg></span>Google
-                     </button>
-                     <button type="button">
-                        <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.397 20.997v-8.196h2.765l.411-3.209h-3.176V7.548c0-.926.258-1.56 1.587-1.56h1.684V3.127A22.336 22.336 0 0 0 14.201 3c-2.444 0-4.122 1.492-4.122 4.231v2.355H7.332v3.209h2.753v8.202h3.312z"></path></svg></span>Facebook
-                     </button>
-                  </div>
-               </div>
             </div>
          </form>
          {/* Signup Step 2 form */}
@@ -177,10 +178,6 @@ const Form = () => {
             <h3>Let's Start</h3>
             <p>Already have an account? <span onClick={goLoginForm}>Login now</span></p>
             <div className="signupStep2">
-               <label htmlFor="signFName"><h4>First Name</h4></label>
-               <input type="text" name="signFName" required minLength={3} onChange={signOnChange} value={signForm.signFName} id="signFName" placeholder='Your first name' />
-               <label htmlFor="signLName"><h4>Last Name</h4></label>
-               <input type="text" name="signLName" required minLength={3} onChange={signOnChange} value={signForm.signLName} id="signLName" placeholder='Your last name' />
                <div className="signupGender">
                   <label htmlFor="signGender"><h4>Gender</h4></label>
                   <div className="gender">

@@ -18,4 +18,4 @@ const postCommentApi = async (postId, description)=>{
       console.log("Some error occured")
    }
 }
-module.exports = postCommentApi;
+export default postCommentApi;

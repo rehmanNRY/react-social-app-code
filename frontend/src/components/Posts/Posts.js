@@ -12,7 +12,6 @@ const Posts = ({ postUserCheck, heading, checkBookmark }) => {
   const [post_desc, setPost_desc] = useState("");
   const [user, setUser] = useState({});
   const [showPostForm, setShowPostForm] = useState(true); // Show post form by default
-
   useEffect(() => {
     if(checkBookmark){
       setbookmarksCheck(true)
@@ -41,6 +40,7 @@ const Posts = ({ postUserCheck, heading, checkBookmark }) => {
 
     fetchData();
     userDetail();
+    // eslint-disable-next-line
   }, [postUserCheck]);
 
   const post_descChng = (e) => {

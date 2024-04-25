@@ -14,9 +14,6 @@
     height: 48px;
     width: 48px;
   }
-  .topBar_CenterRegion svg.absolute{
-    right: 280px;
-  }
   /* Leftbar */
   .leftBar{
     min-width: 260px;
@@ -49,7 +46,7 @@
   .profile_menu ul{
     display: flex;
     padding-left: 10px;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
   }
   .profile_menu ul li{
     padding: 11px 13px;
@@ -97,9 +94,6 @@
   .topBar_RightRegion button{
     height: 46px;
     width: 46px;
-  }
-  .topBar_CenterRegion svg.absolute{
-    right: 255px;
   }
   /* Leftbar */
   .leftBar{
@@ -167,6 +161,20 @@
 
 /* For 900px */
 @media screen and (max-width: 900px) {
+  /* Form */
+  .container{
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    width: 80%;
+  }
+  .container .right{
+    display: none;
+ }
+ .authForm{
+  width: 100%;
+  }
   /* Rightbar */
   .rightbar_warpper{
     min-width: 70px;
@@ -175,7 +183,7 @@
     padding-top: 10px;
     border-top-left-radius: 7px;
     width: 70px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: var(--shadow-color) 0px 3px 8px;
   }
   .rightBar_user{
     background-color: transparent;
@@ -195,12 +203,12 @@
   .rightBar h4{
     position: absolute;
     right: 78px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    box-shadow: var(--shadow-color) 0px 4px 12px;
     border-radius: 9px;
     white-space: nowrap;
     font-size: 16px;
     color: white;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    box-shadow: var(--shadow-color) 0px 4px 12px;
     background-color: var(--text-secondary-color);
     display: none;
     padding: 0 12px;
@@ -264,13 +272,10 @@
 /* For 700px */
 @media screen and (max-width: 700px) {
   .topBar{
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
   }
   .topBar_RightRegion{
     display: none;
-  }
-  .topBar_CenterRegion svg.absolute{
-    right: 15px;
   }
   /* Posts */
   .posts_main{
@@ -305,11 +310,11 @@
 
 /* For 600px */
 @media screen and (max-width: 600px) {
+  .topbarProfiles {
+    display: flex;
+  }
   .topBar_CenterRegion {
     padding: 0 7px;
-  }
-  .topBar_CenterRegion svg.absolute{
-    right: 2px;
   }
   .topBar_Center_Search form button {
     width: 50px;
@@ -317,6 +322,41 @@
   .topBar_Center_Search form input {
     width: 90%;
     padding-left: 45px;
+  }
+  /* Topbar right */
+  .topBar_RightRegion{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    background-color: var(--text-secondary-color);
+    bottom: 0;
+    height: 60px;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: var(--shadow-color) 0px 7px 29px 0px;
+  }
+  .topBar_RightRegion button{
+    border-radius: 0;
+    height: 100%;
+    width: -webkit-fill-available;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+  }
+  .topBar_RightRegion button:hover{
+    background-color: var(--primary-color);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+  .topBar_RightRegion button svg{
+    height: 23px;
+    width: 23px;
+    display: block;
+  }
+  .topBar_RightRegion button:hover svg{
+    stroke: var(--text-secondary-color);
   }
   /* Leftbar */
   .leftBar{
@@ -411,16 +451,89 @@
 
 /* For 500px */
 @media screen and (max-width: 500px) {
+  /* Form */
+  .container{
+    width: 95%;
+  }
+  /* Login Form */
+  .authForm form{
+    padding: 20px 30px;
+    border-radius: 15px;
+  }
   /* Topbar */
   .topBar_LeftRegion {
-    min-width: 225px;
+    min-width: max-content;
   }
   .topBar_LeftRegion span.topBarmenu_icon {
-    margin-right: 10px;
-    margin-left: 5px;
+    margin-right: 15px;
+    margin-left: 10px;
   }
-  .topBar_CenterRegion svg.absolute{
+  .topBar_Center_Search {
+    width: 100%;
+    background-color: transparent;
+    height: fit-content;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .topBar_Center_Search form{
+    justify-content: end;
+  }
+  .topBar_Center_Search form button {
+    outline: none;
+    border: none;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s;
+    box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
+    background-color: var(--text-secondary-color);
+    border-radius: 50%;
+    margin-left: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    float: right;
+  }
+  .topBar_Center_Search form button svg {
+    height: 24px;
+    width: 24px;
+    fill: var(--primary-color);
+    stroke: var(--primary-color);
+  }
+  .topBar_Center_Search form input {
     display: none;
+  }
+  /* Searchbar open */
+  .searchBar_open .topBar_LeftRegion{
+    display: none;
+  }
+  .searchBar_open .topBar_Center_Search form input {
+    display: block;
+    padding-left: 57px;
+    color: white;
+  }
+  .searchBar_open .topBar_Center_Search form input::placeholder{
+    color: rgb(249, 249, 249);
+  }
+  .searchBar_open .topBar_Center_Search{
+    background-color: var(--text-secondary-color);
+    transition: all .5s;
+    height: 50px;
+    border-radius: 30px;
+    box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
+  }
+  .searchBar_open .topBar_Center_Search form {
+    justify-content: space-between;
+  }
+  .searchBar_open .topBar_Center_Search form button{
+    width: 65px;
+    background-color: transparent;
+    display: block;
+    border-radius: 0;
+    box-shadow: none;
+    float: none;
+    margin: 0;
   }
   /* Posts */
   .posts_main {
@@ -480,99 +593,8 @@
   }
 }
 
-/* For 400px */
-@media screen and (max-width: 400px) {
-  .contact_item .contact_left {
-    height: 35px;
-    width: 35px;
-    margin-right: 10px;
-  }
-  .contact_item span {
-    font-size: 14px;
-  }
-}
-
 /* For 450px */
 @media screen and (max-width: 450px) {
-  /* Topbar */
-  .topBar_LeftRegion {
-    min-width: max-content;
-  }
-  .topBar_LeftRegion span.topBarmenu_icon {
-    margin-right: 15px;
-    margin-left: 10px;
-  }
-  .topBar_Center_Search {
-    width: 100%;
-    background-color: transparent;
-    height: fit-content;
-    border-radius: 0;
-    box-shadow: none;
-  }
-  .topBar_Center_Search form{
-    justify-content: end;
-  }
-  .topBar_Center_Search form button {
-    outline: none;
-    border: none;
-    height: 48px;
-    width: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all .2s;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    background-color: var(--text-secondary-color);
-    border-radius: 50%;
-    margin-left: 15px;
-    margin-right: 15px;
-    cursor: pointer;
-    float: right;
-  }
-  .topBar_Center_Search form button svg {
-    height: 24px;
-    width: 24px;
-    fill: var(--primary-color);
-    stroke: var(--primary-color);
-  }
-  .topBar_Center_Search form input {
-    display: none;
-  }
-  /* Topbar right */
-  .topBar_RightRegion{
-    display: flex;
-    position: fixed;
-    width: 100%;
-    background-color: var(--text-secondary-color);
-    bottom: 0;
-    height: 60px;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  }
-  .topBar_RightRegion button{
-    border-radius: 0;
-    height: 100%;
-    width: -webkit-fill-available;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: none;
-  }
-  .topBar_RightRegion button:hover{
-    background-color: var(--primary-color);
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-  }
-  .topBar_RightRegion button svg{
-    height: 23px;
-    width: 23px;
-    display: block;
-  }
-  .topBar_RightRegion button:hover svg{
-    stroke: var(--text-secondary-color);
-  }
   /* Post */
   .posts-new_post, .post {
     padding: 17px 10px;
@@ -615,15 +637,168 @@
     min-width: auto;
     border-left: 4px solid var(--text-secondary-color);
     margin-bottom: 15px;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
     background-color: var(--secondary-color);
   }
   .setProfile_form form button svg {
     display: inline;
   }
   /* Settings */
+  .settings_main {
+    margin: 0;
+  }
   .settings_data a img {
     top: 53%;
     width: 30%;
+  }
+}
+
+/* For 400px */
+@media screen and (max-width: 400px) {
+  /* Form */
+  .container{
+    width: 98%;
+    padding: 0 7px;
+  }
+  /* Login Form */
+  .authForm form{
+    padding: 20px 15px;
+    border-radius: 15px;
+  }
+  .postsHeadingProp {
+    font-size: 23px;
+    padding: 10px 0;
+  }
+  /* Profile */
+  .profile_data{
+    flex-direction: column;
+  }
+  .profile_top .user_profile-btns button {
+    width: 47%;
+    float: right;
+    padding: 11px 0;
+    padding-left: 30px;
+  }
+  /* People */
+  .people-section {
+    padding: 20px 10px;
+  }
+  .people_person {
+    padding: 15px 10px;
+  }
+  .people_right{
+    margin-top: 15px;
+    display: flex;
+  }
+  .people_right button {
+    width: max-content;
+  }
+  /* Contact */
+  .contact_item .contact_left {
+    height: 35px;
+    width: 35px;
+    margin-right: 10px;
+  }
+  .contact_item span {
+    font-size: 14px;
+  }
+}
+
+
+/* For 370px */
+@media screen and (max-width: 370px) {
+  /* Posts */
+  .posts-new_post-bottom div button:nth-child(1){
+    display: none;
+  }
+  .post .post_bottom button{
+    padding: 9px 20px;
+    font-size: 14px;
+    border-radius: 25px;
+  }
+  .post .post_bottom button span:nth-child(2) {
+    padding: 2px 12px;
+    border-radius: 25px;
+    margin-left: 5px;
+  }
+  .post .post_bottom button:nth-child(3){
+    display: none;
+  }
+  /* Settings */
+  .settings_data a {
+    border-radius: 20px;
+    margin: 12px 0;
+  }
+  .settings_data a img {
+    top: 55%;
+    width: 33%;
+  }
+  /* Contact */
+  .contact_data {
+    display: flex;
+  }
+  .contact_item .contact_left {
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+  }
+  .contact_item span, .contact_item .contact_right {
+    display: none;
+  }
+}
+
+/* For 330px */
+@media screen and (max-width: 330px) {
+  .topBar_LeftRegion .topBar_Logo a {
+    font-size: 19px;
+  }
+  /* Posts */
+  .post .post_bottom button {
+    padding: 9px 15px;
+    font-size: 12px;
+    border-radius: 20px;
+  }
+  /* Profile */
+  .user_profile-btns{
+    text-align: center;
+  }
+  .profile_top .user_profile-btns button {
+    width: 90%;
+    float: none;
+    padding: 12px 0;
+    margin: 4px auto;
+  }
+  .profile_top .user_profile-btns button:last-child {
+    margin-left: auto;
+  }
+  /* People */
+  .people_profilePic {
+    height: 70px;
+    width: 70px;
+    margin-right: 20px;
+  }
+  .people_right{
+    flex-direction: column;
+    width: 100%;
+  }
+  .people_right button {
+    width: 90%;
+  }
+  /* Settings */
+  .settings_data {
+    width: 97%;
+    margin: 0 auto;
+    padding: 0px;
+  }
+  .settings_main a {
+    padding: 20px 30px;
+  }
+  .settings_data a h3 {
+    font-size: 25px;
+  }
+  .settings_data a p {
+    font-size: 16px;
+    opacity: 1;
+    line-height: 30px;
   }
 }

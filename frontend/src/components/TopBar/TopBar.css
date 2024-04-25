@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
   transition: all .2s;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
   background-color: var(--text-secondary-color);
   border-radius: 50%;
   margin-left: 15px;
@@ -63,7 +63,8 @@
   background-color: var(--secondary-color);
   height: 50px;
   border-radius: 30px;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
+  position: relative;
 }
 .topBar_Center_Search form{
   display: flex;
@@ -102,7 +103,7 @@
   /* font-size: 14px; */
 }
 input[type="search"]::-webkit-input-placeholder{
-  color: rgb(110, 110, 110);
+  color: var(--placeholder-color);
 }
 input[type="search"]::-webkit-search-cancel-button {
   display: none;
@@ -113,8 +114,10 @@ input[type="search"]::-webkit-search-cancel-button {
   background-color: var(--secondary-color);
   border-radius: 6px;
   margin-top: 8px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: var(--shadow-color) 0px 3px 8px;
   display: none;
+  overflow-y: auto;
+  max-height: 90vh;
 }
 .topbar_searchMenu.displayMenu{
   display: block;
@@ -142,7 +145,7 @@ input[type="search"]::-webkit-search-cancel-button {
   transition: all .2s;
 }
 .topbar_searchMenu-item:hover{
-  background-color: #ddecff;
+  background-color: var(--third-color);
   border-left: 3px solid var(--text-secondary-color);
 }
 .topbar_searchMenu-item .searchmenu-itemPic{
@@ -160,6 +163,30 @@ input[type="search"]::-webkit-search-cancel-button {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
+}
+.searchMatchResult{
+  background-color: #ffff45;
+}
+button.closeSearchMenuButton{
+  background-color: var(--text-secondary-color) !important;
+  border-radius: 50%;
+  height: 48px;
+  width: 48px !important;
+  /* z-index: 99; */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  float: right;
+  right: 0;
+  top: 0;
+  border: none;
+  box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
+  cursor: pointer;
+}
+button.closeSearchMenuButton svg{
+  stroke: white !important;
 }
 /* Topbar right */
 .topBar_RightRegion{
@@ -180,12 +207,12 @@ input[type="search"]::-webkit-search-cancel-button {
   transition: all .2s;
   background-color: transparent;
   background-color: var(--text-secondary-color);
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
   border-radius: 50%;
 }
 .topBar_RightRegion button:hover{
   border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: var(--shadow-color) 0px 3px 8px;
 }
 .topBar_RightRegion button svg{
   stroke: white;

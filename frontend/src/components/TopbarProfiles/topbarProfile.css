@@ -1,0 +1,34 @@
+.topbarProfiles {
+  margin: 10px 0;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  max-width: 90vw;
+  display: none;
+  float: right;
+}
+.topbarProfiles .topbar_Profile{
+  width: 78px;
+  height: 78px;
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  border-radius: 50%;
+  margin: 0 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1.5px solid #e4e6ea;
+}
+.topbarProfiles .topbar_Profile div{
+  height: 70px;
+  width: 70px;
+  background-position: center;
+  background-size: 100%;
+  border-radius: 50%;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, var(--shadow-color) 0px 3px 7px -3px; */
+  transition: all .2s;
+  border: 2px solid var(--secondary-color);
+}
+.topbarProfiles .topbar_Profile div:hover{
+  background-size: 118%;
+}

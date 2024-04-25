@@ -13,7 +13,7 @@
   background-color: var(--primary-color);
   padding: 20px 35px;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: var(--shadow-color) 0px 3px 8px;
   width: 80%;
   margin: 0 auto;
   margin-bottom: 110px;
@@ -47,7 +47,7 @@
   height: 200px;
   width: 170px;
   background-color: var(--secondary-color);
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: var(--shadow-color) 0px 3px 8px;
   margin: 10px 0;
   position: relative;
   border-radius: 15px;
@@ -75,14 +75,15 @@
 }
 .setProfile_text h4{
   font-size: 21px;
+  color: var(--text-dim-color);
 }
 /* Form */
 .setProfile_form form{
   padding: 2px;
   /* border: 2px solid rgb(139, 139, 139); */
-  background-color: var(--secondary-color);
+  background-color: var(--third-color);
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
@@ -97,6 +98,7 @@
   min-width: 300px;
   border-radius: 5px;
   border-left: 4px solid var(--text-secondary-color);
+  color: var(--text-dim-color);
 }
 .setProfile_form form button{
   background-color: var(--text-secondary-color);
@@ -106,7 +108,7 @@
   display: flex;
   align-items: center;
   border: none;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  box-shadow: var(--shadow-color) 0px 1px 4px;
   font-size: 15px;
   cursor: pointer;
 }

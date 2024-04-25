@@ -67,7 +67,7 @@ const RightBar = () => {
             </div>
             <label>Other Users</label>
             <ul>
-               {users.map((user)=>{
+               {users.slice(0, 4).map((user)=>{
                   return (
                      <li key={user._id} onClick={()=>{navigateToPath(`Profile/${user._id}`)}}>
                         <div style={{backgroundImage: `url(${user.profilePic})`}}></div>

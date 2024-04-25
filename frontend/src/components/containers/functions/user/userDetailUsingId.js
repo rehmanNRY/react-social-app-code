@@ -16,4 +16,4 @@ const userDetailUsingId = async (userId) => {
      console.log("Some error occured");
   }
 }
-module.exports = userDetailUsingId;
+export default userDetailUsingId;

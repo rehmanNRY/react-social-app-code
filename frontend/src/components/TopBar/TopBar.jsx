@@ -3,8 +3,10 @@ import "./TopBar.css";
 import { Link, useNavigate } from "react-router-dom";
 import getUserDetail from "../containers/functions/user/userDetailApi";
 import getAllUsersApi from "../containers/functions/user/getAllUsersApi";
+import { X } from "react-feather";
 
 const TopBar = () => {
+  const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [userData, setUserData] = useState({});
   const [users, setUsers] = useState([])
@@ -44,7 +46,6 @@ const TopBar = () => {
       removeClassFromBody(className);
     }
 
-
     // Getting user detail
     const userDetail = async () => {
       const user = await getUserDetail();
@@ -69,9 +70,11 @@ const TopBar = () => {
     const handleClickOutside = (event) => {
       if (buttonRef.current && !buttonRef.current.contains(event.target)) {
         setIsOpen(false);
+        removeClassFromBody('searchBar_open');
       }
     };
     document.addEventListener("click", handleClickOutside);
+
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
@@ -81,8 +84,42 @@ const TopBar = () => {
 
   const toggleSearchMenu = () => {
     setIsOpen(true);
+    if (window.innerWidth <= 500) {
+      addClassToBody('searchBar_open');
+    }
   };
 
+  function toggleDarkMode() {
+    var root = document.documentElement;
+    root.classList.toggle('dark-theme');
+  }
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  // Filter users based on search term
+  const filteredUsers = users.filter((user) =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Function to highlight matching text
+  const highlightText = (text, highlight) => {
+    const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
+    return parts.map((part, index) =>
+      part.toLowerCase() === highlight.toLowerCase() ? (
+        <span key={index} className="searchMatchResult">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+
+  const closeSearchMenu = () => {
+    setIsOpen(false);
+    removeClassFromBody('searchBar_open');
+  };
   return (
     <div className="topBar">
       <div className="topBar_LeftRegion">
@@ -112,128 +149,49 @@ const TopBar = () => {
       </div>
       <div className="topBar_CenterRegion">
         <div className="topBar_Center_Search">
-          <form action="" ref={buttonRef} onClick={toggleSearchMenu}>
-            <div>
-              <button type="button">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 101 101"
-                  id="search"
-                >
-                  <path d="M63.3 59.9c3.8-4.6 6.2-10.5 6.2-17 0-14.6-11.9-26.5-26.5-26.5S16.5 28.3 16.5 42.9 28.4 69.4 43 69.4c6.4 0 12.4-2.3 17-6.2l20.6 20.6c.5.5 1.1.7 1.7.7.6 0 1.2-.2 1.7-.7.9-.9.9-2.5 0-3.4L63.3 59.9zm-20.4 4.7c-12 0-21.7-9.7-21.7-21.7s9.7-21.7 21.7-21.7 21.7 9.7 21.7 21.7-9.7 21.7-21.7 21.7z"></path>
-                </svg>
-              </button>
-            </div>
-            <input
-              type="search"
-              name=""
-              id=""
-              placeholder="Find friends, groups, pages"
-            />
-          </form>
-          <div className={`topbar_searchMenu ${isOpen ? "displayMenu" : ""}`}>
-            <div className="topbar_searchMenu-main">
-              <h3>People</h3>
-              {users.slice(0,3).map((user) => (
+        <form action="" ref={buttonRef} onClick={toggleSearchMenu}>
+          <div>
+            <button type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101" id="search">
+                <path d="M63.3 59.9c3.8-4.6 6.2-10.5 6.2-17 0-14.6-11.9-26.5-26.5-26.5S16.5 28.3 16.5 42.9 28.4 69.4 43 69.4c6.4 0 12.4-2.3 17-6.2l20.6 20.6c.5.5 1.1.7 1.7.7.6 0 1.2-.2 1.7-.7.9-.9.9-2.5 0-3.4L63.3 59.9zm-20.4 4.7c-12 0-21.7-9.7-21.7-21.7s9.7-21.7 21.7-21.7 21.7 9.7 21.7 21.7-9.7 21.7-21.7 21.7z"></path>
+              </svg>
+            </button>
+          </div>
+          <input
+            type="search"
+            name=""
+            id=""
+            placeholder="Find friends, groups, pages"
+            onChange={handleInputChange}
+          />
+        
+        </form>
+        {isOpen && <button type="button" className="closeSearchMenuButton" onClick={closeSearchMenu}><X /></button>}
+        <div className={`topbar_searchMenu ${isOpen ? "displayMenu" : ""}`}>
+          <div className="topbar_searchMenu-main">
+            <h3>People</h3>
+            {searchTerm !== '' ? (
+              filteredUsers.length > 0 ? (
+                filteredUsers.slice(0, 10).map((user) => (
+                  <div key={user._id} className="topbar_searchMenu-item">
+                    <div className="searchmenu-itemPic" style={{backgroundImage: `url(${user.profilePic})`}}></div>
+                    <h4>{highlightText(user.name, searchTerm)}</h4>
+                  </div>
+                ))
+              ) : (
+                <h3 className="noResultText">No results found</h3>
+              )
+            ) : (
+              users.slice(0, 10).map((user) => (
                 <div key={user._id} className="topbar_searchMenu-item">
                   <div className="searchmenu-itemPic" style={{backgroundImage: `url(${user.profilePic})`}}></div>
                   <h4>{user.name}</h4>
                 </div>
-              ))}
-              <h3>Friends</h3>
-              {users.slice(0,3).map((user) => (
-                <div key={user._id} className="topbar_searchMenu-item">
-                  <div className="searchmenu-itemPic" style={{backgroundImage: `url(${user.profilePic})`}}></div>
-                  <h4>{user.name}</h4>
-                </div>
-              ))}
-              <h3>Pages</h3>
-              {users.slice(0,3).map((user) => (
-                <div key={user._id} className="topbar_searchMenu-item">
-                  <div className="searchmenu-itemPic" style={{backgroundImage: `url(${user.profilePic})`}}></div>
-                  <h4>{user.name}</h4>
-                </div>
-              ))}
-            </div>
+              ))
+            )}
           </div>
         </div>
-        <svg
-          className="absolute show-for-large-up"
-          width="66"
-          height="81"
-          viewBox="0 0 466 481"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M259.2 116.588C201.353 152.064 296.476 309.386 426.582 229.598"
-            stroke="url(#paint0_linear_1604_6767)"
-            strokeWidth="21"
-          ></path>
-          <path
-            d="M280.773 319.016C415.77 236.228 314.727 82.537 259.2 116.589"
-            stroke="url(#paint1_linear_1604_6767)"
-            strokeWidth="21"
-          ></path>
-          <path
-            d="M113.391 206.007C55.5432 241.482 150.666 398.804 280.772 319.016"
-            stroke="url(#paint2_linear_1604_6767)"
-            strokeWidth="21"
-          ></path>
-          <path
-            d="M134.964 408.434C269.961 325.647 168.917 171.955 113.391 206.007"
-            stroke="url(#paint3_linear_1604_6767)"
-            strokeWidth="21"
-          ></path>
-          <defs>
-            <linearGradient
-              id="paint0_linear_1604_6767"
-              x1="422.648"
-              y1="230.728"
-              x2="304.822"
-              y2="83.7047"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#FFE14F" stopOpacity="0"></stop>
-              <stop offset="0.244161" stopColor="#FFE14F"></stop>
-              <stop offset="1" stopColor="#FF7676"></stop>
-            </linearGradient>
-            <linearGradient
-              id="paint1_linear_1604_6767"
-              x1="281.856"
-              y1="319.294"
-              x2="233.267"
-              y2="135.709"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#303CAB"></stop>
-              <stop offset="0.546875" stopColor="#A12D8E"></stop>
-              <stop offset="0.989583" stopColor="#FF7676"></stop>
-            </linearGradient>
-            <linearGradient
-              id="paint2_linear_1604_6767"
-              x1="119.848"
-              y1="201.386"
-              x2="234.932"
-              y2="349.589"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#0082E0"></stop>
-              <stop offset="1" stopColor="#303CAB"></stop>
-            </linearGradient>
-            <linearGradient
-              id="paint3_linear_1604_6767"
-              x1="126.5"
-              y1="401.5"
-              x2="44.8895"
-              y2="239.258"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#CCE6F9" stopOpacity="0"></stop>
-              <stop offset="0.244792" stopColor="#0082E0"></stop>
-            </linearGradient>
-          </defs>
-        </svg>
+        </div>
       </div>
       <div className="topBar_RightRegion">
         <button type="button" onClick={()=>{navigateToPath(`Bookmarks`)}}>
@@ -279,27 +237,6 @@ const TopBar = () => {
             </svg>
           </span>
         </button>
-        <button type="button" onClick={()=>{navigateToPath(`Friends-Suggestions`)}}>
-          <span>
-          <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#ffffff"
-              strokeWidth="1.7"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="feather feather-smile"
-            >
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-              <line x1="9" y1="9" x2="9.01" y2="9"></line>
-              <line x1="15" y1="9" x2="15.01" y2="9"></line>
-            </svg>
-          </span>
-        </button>
         <button type="button" onClick={()=>{navigateToPath(`Profile/${userData._id}`)}} >
           <span>
             <svg
@@ -317,6 +254,11 @@ const TopBar = () => {
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
+          </span>
+        </button>
+        <button type="button" onClick={toggleDarkMode}>
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           </span>
         </button>
       </div>

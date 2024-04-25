@@ -18,4 +18,4 @@ const bookmarkPostApi = async (postId) => {
       console.log("Some error occured");
    }
 }
-module.exports = bookmarkPostApi;
+export default bookmarkPostApi;

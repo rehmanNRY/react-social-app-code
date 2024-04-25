@@ -1,15 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* --text-secondary-color: #2F80ED; */
+/* Light theme */
 :root{
   --primary-color: white;
   --secondary-color: #F5F6FA;
+  --third-color: #f4f6ff;
   --text-color: black;
-  --text-secondary-color: #7F56D9;
-  /* --text-secondary-color: #2F80ED; */
-  /* --primary-color: #030000;
-  --secondary-color: #30302c;
-  --text-color: black;
-  --text-secondary-color: #F0CC80; */
+  --text-secondary-color: #6c34e5;
+  --text-dim-color: rgb(60, 60, 60);
+  --placeholder-color: rgb(88, 82, 82);
+  --shadow-color: rgba(0, 0, 0, .15);
+}
+/* Dark theme */
+.dark-theme{
+  --primary-color: #0A0516;
+  --secondary-color: #171423;
+  --third-color: #3C3164;
+  --text-color: white;
+  /* --text-secondary-color: #DF4D50; */
+  /* --text-secondary-color: #1258e2; */
+  --text-dim-color: rgb(210, 210, 210);
+  --placeholder-color: rgb(172, 161, 161);
+  --shadow-color: #ffffff26;
 }
 
 *{

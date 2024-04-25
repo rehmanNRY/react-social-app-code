@@ -18,4 +18,4 @@ const deleteCommentApi = async (commentId)=>{
       console.log("Some error occured")
    }
 }
-module.exports = deleteCommentApi;
+export default deleteCommentApi;

@@ -21,7 +21,7 @@
 .posts-new_post,.post{
    padding: 18px;
    background-color: var(--primary-color);
-   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+   box-shadow: var(--shadow-color) 0px 1px 4px;
    border-radius: 10px;
    margin: 13px 0;
 }
@@ -39,20 +39,21 @@
    background-position: center;
    background-size: cover;
    margin-right: 6px;
-   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+   box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
 }
 .posts-new_post .posts-new_post-top input{
    background-color: var(--secondary-color);
+   color: var(--text-dim-color);
    height: 43px;
    border-radius: 35px;
    padding: 1px 21px;
    width: calc(100% - 95px);
    border: none;
    outline: none;
-   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+   box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
 }
 .posts-new_post .posts-new_post-top input::placeholder{
-   color: #484848;
+   color: var(--placeholder-color);
 }
 /* New post bottom*/
 .posts-new_post-bottom{
@@ -70,6 +71,7 @@
    font-size: 25px;
    cursor: pointer;
    transition: all .1s;
+   color: var(--text-dim-color);
 }
 .posts-new_post-bottom ul li i:hover,.post .post_top ul li i:hover{
    color: var(--text-secondary-color);
@@ -84,7 +86,7 @@
    border: none;
    border-radius: 25px;
    cursor: pointer;
-   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+   box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
 }
 .posts-new_post-bottom div button:hover{
    background-color: #000000;

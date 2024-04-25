@@ -17,4 +17,4 @@ const bookmarkListApi = async () => {
       console.log("Some error occured");
    }
 }
-module.exports = bookmarkListApi;
+export default bookmarkListApi;

@@ -15,4 +15,4 @@ const getAllUsersApi = async () => {
    }
 };
 
-module.exports = getAllUsersApi;
+export default getAllUsersApi;

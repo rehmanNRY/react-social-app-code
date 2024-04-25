@@ -41,14 +41,15 @@
    border: none;
    outline: none;
    background-color: var(--secondary-color);
+   color: var(--text-color);
    cursor: pointer;
-   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+   box-shadow: var(--shadow-color) 0px 1px 4px;
    display: flex;
    align-items: center;
    transition: all .2s;
 }
 .post .post_bottom button:hover{
-   background-color: #f1f7ff;
+   background-color: var(--third-color);
 }
 .post .post_bottom button span{
    margin-right: 7px;
@@ -71,7 +72,7 @@
    margin-left: -97px;
    margin-top: 50px;
    background-color: var(--secondary-color);
-   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, var(--shadow-color) 0px 1px 0px inset;
    overflow: hidden;
 }
 .post_menu button{
@@ -112,7 +113,7 @@
    background-size: cover;
    z-index: 2;
    position: relative;
-   box-shadow: rgba(87, 93, 98, 0.3) 0px 1px 2px 0px, rgba(95, 102, 107, 0.15) 0px 2px 6px 2px;
+   box-shadow: var(--shadow-color)0px 1px 2px 0px, var(--shadow-color) 0px 2px 6px 2px;
 }
 .post_likers div div:last-child{
    margin-left: -4px;
@@ -121,7 +122,7 @@
 }
 .post_likers p{
    line-height: 18px;
-   color: #2f2f2f;
+   color: var(--text-dim-color);
    margin-left: 6px;
    font-size: 14px;
    cursor: pointer;
@@ -129,15 +130,15 @@
 .post .likers_list{
    padding: 8px 11px;
    border-radius: 13px;
-   background-color: white;
-   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+   background-color: var(--primary-color);
+   box-shadow: var(--shadow-color) 0px 8px 24px;
    position: absolute;
    z-index: 3;
    margin-top: 40px;
    opacity: 83%;
 }
 .post .likers_list li{
-   color: black;
+   color: var(--text-color);
    font-size: 12px;
 }
 /* comment */
@@ -153,17 +154,21 @@
    background-position: center;
    background-size: cover;
    margin-right: 6px;
-   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+   box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
 }
 .post form input{
    height: 39px;
    width: calc(100% - 95px);
    background-color: var(--secondary-color);
+   color: var(--text-dim-color);
    border-radius: 35px;
    padding: 2px 20px;
    border: none;
    outline: none;
-   box-shadow: rgba(87, 93, 98, 0.3) 0px 1px 2px 0px, rgba(95, 102, 107, 0.15) 0px 2px 6px 2px;
+   box-shadow: var(--shadow-color) 0px 1px 2px 0px, rgba(95, 102, 107, 0.15) 0px 2px 6px 2px;
+}
+.post form input::placeholder{
+   color: var(--placeholder-color);
 }
 .post form button{
    background-color: transparent;
@@ -200,7 +205,7 @@
    background-position: center;
    background-size: cover;
    margin-right: 6px;
-   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+   box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
    cursor: pointer;
 }
 .comment .commentDes_div{
@@ -208,13 +213,14 @@
    border-radius: 12px;
    background-color: var(--secondary-color);
    color: #232323;
-   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+   box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
 }
 .comment div h4,.cmnts_sort h4{
    display: inline-block;
    font-size: 14px;
    font-weight: 600;
    cursor: pointer;
+   color: var(--text-dim-color);
 }
 .comment .comment_topBar{
    display: flex;
@@ -234,10 +240,11 @@
 .comment div p,.cmnts_sort p{
    font-size: 15px;
    font-weight: 400;
+   color: var(--text-color);
 }
 .comment div p span{
    margin-left: 7px;
-   color: #5a5a5a;
+   color: var(--text-dim-color);
    font-size: 12px;
 }
 .comment:not(:first-child){
@@ -255,7 +262,7 @@
 }
 /* Comment menu */
 .comment_menu{
-   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   box-shadow: var(--shadow-color) 0px 3px 8px;
    background-color: var(--primary-color);
    padding: 6px 13px;
    border-radius: 7px;
@@ -283,7 +290,7 @@
    padding: 12px;
    position: absolute;
    background-color: var(--secondary-color);
-   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   box-shadow: var(--shadow-color) 0px 3px 8px;
    border-radius: 10px;
    margin-top: -167px;
 }

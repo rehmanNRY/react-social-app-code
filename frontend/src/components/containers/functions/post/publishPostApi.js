@@ -20,4 +20,4 @@ const publishPostApi = async (description)=>{
       console.log("Some error occured");
    }
 }
-module.exports = publishPostApi;
+export default publishPostApi;

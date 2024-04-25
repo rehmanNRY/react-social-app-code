@@ -17,4 +17,4 @@ const userDetailApi = async () => {
    }
  };
 
- module.exports = userDetailApi;
+export default userDetailApi;

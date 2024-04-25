@@ -170,6 +170,7 @@ const Post = (props) => {
   const comment_descChng = (e) => {
     setComment_desc(e.target.value);
   };
+
   const newComment = async (e, id) => {
     e.preventDefault();
     const json = await postCommentApi(id, comment_desc);
@@ -177,12 +178,16 @@ const Post = (props) => {
       const newComment = json.comment;
       setComments([newComment, ...comments]);
       setTotalComments(comments.length + 1);
+      // Update the commentUser state with details of the user who posted the new comment
+      const userDetails = await userDetailUsingId(newComment.user_id);
+      setCommentUser([userDetails, ...commentUser]);
       // Clear the comment input
       setComment_desc("");
     } else {
-      console.log(json, "some error occured");
+      console.log(json, "some error occurred");
     }
   };
+
   // View all comments
   const [viewCmnts, setViewCmnts] = useState("");
   const [viewCmntsBtn, setViewCmntsBtn] = useState("View all comments");

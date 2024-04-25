@@ -9,7 +9,7 @@
   padding-bottom: 10px;
   overflow: hidden;
   text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
 }
 .friend_suggested .friend_suggestPic{
   height: 170px;
@@ -21,7 +21,7 @@
   background-repeat: no-repeat;
   /* border-radius: 50%; */
   margin: 0 auto;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: var(--shadow-color) 0px 7px 29px 0px;
 }
 .friend_suggested h3{
   line-height: 50px;
@@ -40,7 +40,7 @@
   font-size: 15px;
   cursor: pointer;
   padding-left: 48px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: var(--shadow-color) 0px 3px 8px;
 }
 .friend_suggested button span{
   position: absolute;

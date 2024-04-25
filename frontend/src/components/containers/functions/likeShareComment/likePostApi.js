@@ -18,4 +18,4 @@ const likePostApi = async (id) => {
       console.log("Some error occured")
    }
 }
-module.exports = likePostApi;
+export default likePostApi;

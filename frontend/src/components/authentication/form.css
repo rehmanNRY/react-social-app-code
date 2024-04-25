@@ -1,12 +1,13 @@
+.authForm{
+   width: 50%;
+}
 /* Login Form */
 .authForm form{
-   background-color: white;
-   width: 330px;
+   background-color: var(--primary-color);
+   /* width: 100%; */
    padding: 30px 40px;
-   padding-bottom: 40px;
    border-radius: 15px;
-   border-radius: 3px;
-   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   box-shadow: var(--shadow-color) 0px 3px 8px;
 }
 .authForm form h3{
    font-size: 32px;
@@ -19,7 +20,7 @@
 .authForm form p span,form label h4 span{
    font-weight: 500;
    text-decoration: underline;
-   color: #0027c3;
+   color: var(--text-secondary-color);
    cursor: pointer;
 }
 .authForm form label h4{
@@ -28,15 +29,29 @@
    font-size: 14px;
 }
 .authForm form input{
-   width: 308px;
-   padding: 13px 0;
-   border-radius: 6px;
+   padding: 13px 20px;
+   width: -webkit-fill-available;
+   border-radius: 30px;
    outline: none;
    border: none;
    margin-top: 8px;
    border: 1px solid #b18fe5;
-   padding-left: 20px;
-   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px;
+   /* padding-left: 20px; */
+   box-shadow: var(--shadow-color) 0px 1px 3px;
+}
+form.invalidCredLogin label h4{
+   color: #cc0029;
+}
+form.invalidCredLogin input{
+   border: 1px solid #cc0029;
+}
+.invlidCredText, .matchPassword{
+   color: #cc0029 !important;
+   padding-top: 13px;
+   display: none;
+}
+form.invalidCredLogin .invlidCredText{
+   display: block;
 }
 .authForm form label span{
    float: right;
@@ -49,15 +64,18 @@
    padding: 13px;
    width: 100%;
    margin-top: 20px;
-   border-radius: 7px;
-   border: 2px solid #7c2a80;
-   background-color: #2e439a;
-   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+   border-radius: 27px;
+   border: 2px solid var(--text-secondary-color);
+   background-color: var(--text-secondary-color);
+   box-shadow: var(--shadow-color) 0px 1px 4px;
    color: white;
    font-weight: 500;
    cursor: pointer;
    text-transform: uppercase;
-   background-image: linear-gradient(90deg, #7c2a80 0%, #2e439a 100%);
+   /* background-image: linear-gradient(90deg, #7c2a80 0%, #2e439a 100%); */
+}
+form.invalidCredLogin button{
+   margin-top: 7px;
 }
 .authForm .formBottom p{
    margin-top: 17px;
@@ -124,25 +142,27 @@
 }
 /* Signup Form */
 .authForm .signupForm{
-   padding-top: 10px;
+   padding-top: 5px;
+}
+.authForm .signupForm label h4{
+   padding-top: 13px;
+}
+.unequalPass.signupForm input[type=password]{
+   border-color: #cc0029;
+}
+.unequalPass.signupForm .matchPassword{
+   display: block;
 }
 .authForm .signupForm .signupSteps{
    display: flex;
    justify-content: space-between;
-   padding-bottom: 20px;
+   padding: 15px 0;
 }
 .authForm .signupForm .signupSteps div{
    height: 2px;
    border-radius: 3px;
    width: 49%;
    background-color: #0027c3;
-}
-.authForm .signupForm .signupBtns{
-   display: flex;
-   justify-content: space-between;
-}
-.authForm .signupForm .signupBtns button{
-   width: 47%;
 }
 .authForm .signupForm .signupStep2 #goSignStep1Btn{
    background-color: white;
@@ -154,22 +174,6 @@
    background-image: none;
    color: white;
    background-image: linear-gradient(90deg, #7c2a80 0%, #2e439a 100%);
-}
-.authForm .signupForm .formBottom button{
-   padding-left: 35px;
-}
-.authForm .signupForm .signupStep1 .formBottom .signupBtns button:nth-child(1){
-   border-color: #f0385d;
-   background-color: #f0385d;
-   background-image: linear-gradient(90deg, #df9185 0%, #f0385d 55%);
-} 
-.authForm .signupForm .signupStep1 .formBottom .signupBtns button:nth-child(1):hover{
-   color: rgb(224, 79, 57);
-   background-color: white;
-   background-image: none;
-}
-.authForm .signupForm .signupStep1 .formBottom .signupBtns button:nth-child(1):hover svg{
-   fill: rgb(224, 79, 57);
 }
 /* Signup gender section */
 .authForm .signupGender label h4{

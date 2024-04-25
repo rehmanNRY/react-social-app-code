@@ -64,7 +64,7 @@ const FriendList = () => {
             <div className="people_right">
               <button type="button">
                 <span>
-                <i class='bx bxs-heart-circle' ></i>
+                <i className='bx bxs-heart-circle' ></i>
                 </span>
                 Friends
               </button>

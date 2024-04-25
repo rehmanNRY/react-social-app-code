@@ -12,4 +12,4 @@ const fetchPostsApi = async () => {
       console.log("Some error occured")
    }
 }
-module.exports = fetchPostsApi;
+export default fetchPostsApi;

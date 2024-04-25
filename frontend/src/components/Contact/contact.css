@@ -10,10 +10,12 @@
   font-size: 42px;
   padding-top: 60px;
   font-weight: 500;
+  color: var(--text-color);
 }
 .contact_main p{
   padding: 0 130px;
   padding-top: 15px;
+  color: var(--text-color);
 }
 .contact_links{
   display: flex;
@@ -28,7 +30,7 @@
 }
 .contact_item a{
   text-decoration: none;
-  color: black;
+  color: var(--text-color);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -77,7 +79,7 @@
   border-radius: 0;
 }
 .contact_item span{
-  color: #0d0c22;
+  color: var(--text-secondary-color);
   font-weight: 600;
   font-size: 20px;
 }

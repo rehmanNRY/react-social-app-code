@@ -36,6 +36,7 @@ const LeftBar = () => {
   const logout = () => {
     if (localStorage.authToken) {
       localStorage.removeItem("authToken");
+      navigate('/auth');
     }
   };
 

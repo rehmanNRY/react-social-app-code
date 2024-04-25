@@ -27,13 +27,14 @@
   background-color: var(--primary-color);
   padding: 12px 20px;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 3px, rgba(0, 0, 0, 0.15) 0px 2px 3px;
+  box-shadow: var(--shadow-color) 0px 2px 3px, var(--shadow-color) 0px 2px 3px;
   margin: 15px 0;
 }
 .people_left{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: var(--text-color);
 }
 .people_profilePic{
   background-color: var(--secondary-color);
@@ -41,7 +42,7 @@
   height: 60px;
   width: 60px;
   margin-right: 15px;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
   background-size: 100%;
   background-position: center;
   cursor: pointer;
@@ -71,7 +72,7 @@
   font-size: 15px;
   cursor: pointer;
   padding-left: 48px;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: var(--shadow-color) 1.95px 1.95px 2.6px;
   margin: 5px 3px;
 }
 .people_right button:last-child{

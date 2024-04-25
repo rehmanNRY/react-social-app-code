@@ -18,4 +18,4 @@ const deletePostApi = async (id) => {
     console.log("Some error occured");
   }
 }
-module.exports = deletePostApi;
+export default deletePostApi;
